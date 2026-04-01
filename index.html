@@ -4,1627 +4,421 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Osmos — Omnichannel Retail Media Tech for Retailers</title>
-<!-- ===== POSTHOG ANALYTICS ===== -->
+<!-- POSTHOG -->
 <script>
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-
-  posthog.init('phc_W7RkRszXES8fawPwyJpOIts906WXVmpTcgKEt0Ys1Ex', {
-    api_host: 'https://us.i.posthog.com',
-    defaults: '2026-01-30',
-    autocapture: true,
-    capture_pageview: true,
-    capture_pageleave: true,
-    session_recording: {
-      maskAllInputs: true
-    }
-  });
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_W7RkRszXES8fawPwyJpOIts906WXVmpTcgKEt0Ys1Ex',{api_host:'https://us.i.posthog.com',defaults:'2026-01-30',autocapture:true,capture_pageview:true,capture_pageleave:true,session_recording:{maskAllInputs:true}});
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET & ROOT ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--osmos-blue:#636CFF;--osmos-navy:#2C266D;--osmos-purple:#3E266D;--osmos-mint:#89F1D9;--osmos-lavender:#B1B5FF;--osmos-bg-light:#F2F2FC;--osmos-ink:#181818;--osmos-ink-2:#595959;--osmos-ink-3:#888;--osmos-border:#E9E9E9;--osmos-white:#FFF;--osmos-btn-dark:#4849B6;--osmos-gradient:linear-gradient(135deg,#2C266D 0%,#3E266D 55%,#4849B6 100%);--font-display:'Montserrat',sans-serif;--font-body:'Lato',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--osmos-ink);background:var(--osmos-white);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-style:none}
 
-:root {
-  --osmos-blue: #636CFF;
-  --osmos-navy: #2C266D;
-  --osmos-purple: #3E266D;
-  --osmos-mint: #89F1D9;
-  --osmos-lavender: #B1B5FF;
-  --osmos-bg-light: #F2F2FC;
-  --osmos-ink: #181818;
-  --osmos-ink-2: #595959;
-  --osmos-ink-3: #888888;
-  --osmos-border: #E9E9E9;
-  --osmos-white: #FFFFFF;
-  --osmos-btn-dark: #4849B6;
-  --osmos-btn-mid: #4E55CD;
-  --osmos-gradient: linear-gradient(135deg, #2C266D 0%, #3E266D 55%, #4849B6 100%);
-  --font-display: 'Montserrat', sans-serif;
-  --font-body: 'Lato', sans-serif;
-}
+/* Page routing */
+.page{display:none}.page.active{display:block}
 
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  color: var(--osmos-ink);
-  background: var(--osmos-white);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
-ul { list-style: none; }
+/* Announcement */
+.announcement-bar{background:var(--osmos-bg-light);text-align:center;padding:10px 20px;font-size:13px;color:var(--osmos-ink-2);border-bottom:1px solid var(--osmos-border)}
+.announcement-bar a{color:var(--osmos-blue);font-weight:700;margin-left:6px}
 
-/* ===== ANNOUNCEMENT BAR ===== */
-.announcement-bar {
-  background: var(--osmos-bg-light);
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 13px;
-  color: var(--osmos-ink-2);
-  border-bottom: 1px solid var(--osmos-border);
-}
-.announcement-bar a {
-  color: var(--osmos-blue);
-  font-weight: 700;
-  margin-left: 6px;
-}
-.announcement-bar a:hover { text-decoration: underline; }
+/* Navbar */
+.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--osmos-border);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 24px rgba(44,38,109,.08)}
+.nav-logo{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--osmos-blue);letter-spacing:-.5px;cursor:pointer}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;font-weight:600;color:var(--osmos-ink);transition:color .2s;position:relative;cursor:pointer}
+.nav-links a:hover{color:var(--osmos-blue)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--osmos-blue);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--osmos-blue);color:#fff!important;padding:10px 24px;border-radius:8px;font-weight:700;font-size:14px;transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--osmos-btn-dark);transform:translateY(-1px)}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:24px;height:2px;background:var(--osmos-ink);border-radius:2px;transition:.3s}
 
-/* ===== NAVBAR ===== */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--osmos-border);
-  padding: 0 48px;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: box-shadow 0.3s;
-}
-.navbar.scrolled { box-shadow: 0 2px 24px rgba(44,38,109,0.08); }
+/* Buttons */
+.btn-primary{background:var(--osmos-blue);color:#fff;padding:14px 36px;border-radius:10px;font-weight:700;font-size:16px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:var(--font-body)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,108,255,.4)}
+.btn-outline{background:transparent;color:#fff;padding:14px 36px;border-radius:10px;font-weight:700;font-size:16px;border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:border-color .2s,background .2s;font-family:var(--font-body)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 
-.nav-logo {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--osmos-blue);
-  letter-spacing: -0.5px;
-}
+/* Section shared */
+.section-eyebrow{font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--osmos-blue);text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--osmos-navy);margin-bottom:60px;line-height:1.2}
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-.nav-links a {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--osmos-ink);
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a:hover { color: var(--osmos-blue); }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--osmos-blue);
-  transition: width 0.3s;
-}
-.nav-links a:hover::after { width: 100%; }
+/* Hero */
+.hero{background:var(--osmos-gradient);position:relative;overflow:hidden;padding:100px 48px 80px;text-align:center;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero::before,.hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.05);pointer-events:none}
+.hero::before{width:900px;height:900px}.hero::after{width:600px;height:600px;border-color:rgba(255,255,255,.04)}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.3;pointer-events:none}
+.hero-orb--1{width:400px;height:400px;background:#636CFF;top:-100px;right:-100px}
+.hero-orb--2{width:300px;height:300px;background:#89F1D9;bottom:-80px;left:-60px}
+.hero h1{font-family:var(--font-display);font-size:clamp(40px,6vw,72px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px;position:relative;z-index:1}
+.hero h1 span{color:var(--osmos-mint)}
+.hero p{color:rgba(255,255,255,.8);font-size:clamp(16px,2vw,20px);max-width:600px;margin:0 auto 40px;position:relative;z-index:1}
+.hero-buttons{display:flex;gap:16px;justify-content:center;position:relative;z-index:1}
 
-.nav-cta {
-  background: var(--osmos-blue);
-  color: #fff !important;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: background 0.2s, transform 0.2s;
-}
-.nav-cta:hover { background: var(--osmos-btn-dark); transform: translateY(-1px); }
-.nav-cta::after { display: none !important; }
+/* Ticker */
+.logo-ticker{padding:40px 0;background:var(--osmos-white);overflow:hidden;border-bottom:1px solid var(--osmos-border)}
+.ticker-track{display:flex;gap:64px;animation:ticker 30s linear infinite;width:max-content}
+.ticker-track span{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--osmos-ink-3);white-space:nowrap;opacity:.5}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 1001;
-}
-.hamburger span {
-  width: 24px;
-  height: 2px;
-  background: var(--osmos-ink);
-  border-radius: 2px;
-  transition: 0.3s;
-}
+/* Impact */
+.impact{padding:100px 48px;background:var(--osmos-bg-light);text-align:center}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1100px;margin:0 auto}
+.stat-card{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:14px;padding:40px 24px;transition:transform .3s,border-color .3s}
+.stat-card:hover{transform:translateY(-6px);border-color:var(--osmos-blue)}
+.stat-number{font-family:var(--font-body);font-weight:300;font-size:56px;color:var(--osmos-blue);line-height:1;margin-bottom:8px}
+.stat-label{font-size:14px;color:var(--osmos-ink-2)}
 
-/* ===== HERO ===== */
-.hero {
-  background: var(--osmos-gradient);
-  position: relative;
-  overflow: hidden;
-  padding: 100px 48px 80px;
-  text-align: center;
-  min-height: 92vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+/* OSMOSphere */
+.osmosphere{padding:100px 48px;background:var(--osmos-white)}
+.osmosphere .section-eyebrow,.osmosphere .section-title{text-align:center}
+.tabs-container{max-width:1100px;margin:0 auto}
+.tabs-nav{display:flex;justify-content:center;gap:8px;margin-bottom:48px}
+.tab-btn{font-family:var(--font-display);font-size:15px;font-weight:600;padding:12px 28px;border-radius:10px;border:2px solid var(--osmos-border);background:transparent;color:var(--osmos-ink);cursor:pointer;transition:all .3s}
+.tab-btn.active{background:var(--osmos-blue);color:#fff;border-color:var(--osmos-blue)}
+.tab-btn:hover:not(.active){border-color:var(--osmos-blue);color:var(--osmos-blue)}
+.tab-content{display:none;animation:tabFade .4s ease}.tab-content.active{display:block}
+@keyframes tabFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel{background:var(--osmos-bg-light);border-radius:20px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.tab-panel h3{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--osmos-navy);margin-bottom:24px}
+.tab-panel h3 em{color:var(--osmos-blue);font-style:italic}
+.tab-panel ul{display:flex;flex-direction:column;gap:12px}
+.tab-panel li{font-size:15px;color:var(--osmos-ink-2);padding-left:24px;position:relative}
+.tab-panel li::before{content:'';position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:50%;background:var(--osmos-mint)}
+.explore-link{display:inline-block;margin-top:24px;font-weight:700;color:var(--osmos-blue);font-size:15px}
+.explore-link:hover{text-decoration:underline}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:16px}
+.app-chip{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:12px;padding:16px 12px;text-align:center;font-size:12px;font-weight:600;color:var(--osmos-ink);transition:transform .2s,border-color .2s}
+.app-chip:hover{transform:translateY(-3px);border-color:var(--osmos-blue)}
+.app-chip-icon{width:36px;height:36px;margin:0 auto 8px;border-radius:8px;background:var(--osmos-lavender);display:flex;align-items:center;justify-content:center;font-size:16px}
 
-/* Concentric circle motif */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 900px;
-  height: 900px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.05);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.04);
-  pointer-events: none;
-}
+/* Testimonials */
+.testimonials{padding:100px 48px;background:var(--osmos-gradient);text-align:center;overflow:hidden}
+.testimonials .section-eyebrow{color:var(--osmos-mint)}.testimonials .section-title{color:#fff}
+.testimonial-slider{max-width:800px;margin:0 auto}
+.testimonial-card{display:none;animation:slideFade .5s ease}.testimonial-card.active{display:block}
+@keyframes slideFade{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+.testimonial-card blockquote{font-size:18px;color:rgba(255,255,255,.9);line-height:1.7;font-style:italic;margin-bottom:32px}
+.testimonial-author{display:flex;align-items:center;justify-content:center;gap:16px}
+.testimonial-avatar{width:52px;height:52px;border-radius:50%;background:var(--osmos-lavender);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:var(--osmos-navy);font-size:18px}
+.testimonial-name{font-weight:700;color:#fff;font-size:16px}
+.testimonial-role{font-size:13px;color:rgba(255,255,255,.6)}
+.slider-controls{margin-top:40px;display:flex;gap:12px;justify-content:center}
+.slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .3s,transform .3s}
+.slider-dot.active{background:var(--osmos-mint);transform:scale(1.3)}
 
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  pointer-events: none;
-}
-.hero-orb--1 {
-  width: 400px; height: 400px;
-  background: #636CFF;
-  top: -100px; right: -100px;
-}
-.hero-orb--2 {
-  width: 300px; height: 300px;
-  background: #89F1D9;
-  bottom: -80px; left: -60px;
-}
+/* Integrations */
+.integrations{padding:100px 48px;background:var(--osmos-white);text-align:center}
+.integrations .section-title{margin-bottom:16px}
+.integrations-subtitle{font-size:16px;color:var(--osmos-ink-2);margin-bottom:48px}
+.integration-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:900px;margin:0 auto 48px}
+.integration-pill{background:var(--osmos-bg-light);border:1px solid var(--osmos-border);border-radius:12px;padding:14px 28px;font-size:14px;font-weight:600;color:var(--osmos-ink);transition:transform .2s,border-color .2s}
+.integration-pill:hover{transform:translateY(-2px);border-color:var(--osmos-blue)}
+.integration-features{display:flex;justify-content:center;gap:40px;margin-top:48px}
+.int-feature{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;color:var(--osmos-ink)}
+.int-feature-icon{width:44px;height:44px;border-radius:12px;background:var(--osmos-bg-light);display:flex;align-items:center;justify-content:center}
+.int-feature-icon svg{width:22px;height:22px;stroke:var(--osmos-blue);fill:none;stroke-width:2}
 
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 1;
-}
-.hero h1 span {
-  color: var(--osmos-mint);
-}
-.hero p {
-  color: rgba(255,255,255,0.8);
-  font-size: clamp(16px, 2vw, 20px);
-  max-width: 600px;
-  margin: 0 auto 40px;
-  position: relative;
-  z-index: 1;
-}
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.btn-primary {
-  background: var(--osmos-blue);
-  color: #fff;
-  padding: 14px 36px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-family: var(--font-body);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(99,108,255,0.4);
-}
-.btn-outline {
-  background: transparent;
-  color: #fff;
-  padding: 14px 36px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  border: 2px solid rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-  font-family: var(--font-body);
-}
-.btn-outline:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.08);
-}
+/* Industries */
+.industries{padding:100px 48px;background:var(--osmos-bg-light);text-align:center}
+.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+.industry-card{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:16px;padding:40px 28px;text-align:center;transition:transform .3s,border-color .3s;cursor:pointer}
+.industry-card:hover{transform:translateY(-6px);border-color:var(--osmos-blue)}
+.industry-icon{width:56px;height:56px;border-radius:14px;background:var(--osmos-bg-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px}
+.industry-card h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--osmos-navy)}
 
-/* ===== LOGO TICKER ===== */
-.logo-ticker {
-  padding: 40px 0;
-  background: var(--osmos-white);
-  overflow: hidden;
-  border-bottom: 1px solid var(--osmos-border);
-}
-.ticker-track {
-  display: flex;
-  gap: 64px;
-  animation: ticker 30s linear infinite;
-  width: max-content;
-}
-.ticker-track span {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--osmos-ink-3);
-  white-space: nowrap;
-  opacity: 0.5;
-}
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+/* Tech */
+.tech{padding:100px 48px;background:var(--osmos-white);text-align:center}
+.tech-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.tech-stat-value{font-family:var(--font-body);font-weight:300;font-size:42px;color:var(--osmos-blue);line-height:1;margin-bottom:8px}
+.tech-stat-label{font-size:13px;color:var(--osmos-ink-2)}
 
-/* ===== IMPACT SECTION ===== */
-.impact {
-  padding: 100px 48px;
-  background: var(--osmos-bg-light);
-  text-align: center;
-}
-.section-eyebrow {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--osmos-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 700;
-  color: var(--osmos-navy);
-  margin-bottom: 60px;
-  line-height: 1.2;
-}
+/* Security */
+.security{padding:100px 48px;background:var(--osmos-bg-light);text-align:center}
+.compliance-badges{display:flex;justify-content:center;gap:32px;margin-top:40px;flex-wrap:wrap}
+.compliance-badge{width:100px;height:100px;border-radius:16px;background:var(--osmos-white);border:1px solid var(--osmos-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--osmos-navy);text-align:center;padding:8px;transition:transform .2s}
+.compliance-badge:hover{transform:translateY(-4px)}
+.security-features{display:flex;justify-content:center;gap:48px;margin-top:40px}
+.security-feat{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600}
+.security-feat-icon{width:40px;height:40px;border-radius:50%;background:var(--osmos-mint);display:flex;align-items:center;justify-content:center;font-size:18px}
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.stat-card {
-  background: var(--osmos-white);
-  border: 1px solid var(--osmos-border);
-  border-radius: 14px;
-  padding: 40px 24px;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.stat-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--osmos-blue);
-}
-.stat-number {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 56px;
-  color: var(--osmos-blue);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.stat-label {
-  font-size: 14px;
-  color: var(--osmos-ink-2);
-  font-weight: 400;
-}
+/* CTA */
+.cta-section{padding:100px 48px;background:var(--osmos-gradient);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.cta-section h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.cta-section>p{color:rgba(255,255,255,.7);font-size:18px;margin-bottom:40px;position:relative;z-index:1}
+.cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto 48px;position:relative;z-index:1}
+.cta-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:32px 24px;backdrop-filter:blur(8px);transition:transform .3s,background .3s}
+.cta-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.12)}
+.cta-card-icon{width:48px;height:48px;border-radius:12px;background:rgba(137,241,217,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px}
+.cta-card h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;margin-bottom:8px}
+.cta-card p{font-size:13px;color:rgba(255,255,255,.6)}
+.cta-buttons{display:flex;gap:16px;justify-content:center;position:relative;z-index:1}
 
-/* ===== APP STORE / OSMOSPHERE ===== */
-.osmosphere {
-  padding: 100px 48px;
-  background: var(--osmos-white);
-}
-.osmosphere .section-eyebrow,
-.osmosphere .section-title { text-align: center; }
+/* Footer */
+.footer{background:var(--osmos-navy);padding:64px 48px 32px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .nav-logo{color:#fff;margin-bottom:16px;display:inline-block}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.6;max-width:280px}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-social{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;transition:border-color .2s,color .2s}
+.footer-social:hover{border-color:var(--osmos-mint);color:var(--osmos-mint)}
+.footer-col h5{font-family:var(--font-display);font-size:14px;font-weight:600;color:#fff;margin-bottom:20px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--osmos-mint)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:12px;color:rgba(255,255,255,.35);transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.7)}
 
-.tabs-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.tabs-nav {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 48px;
-}
-.tab-btn {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 10px;
-  border: 2px solid var(--osmos-border);
-  background: transparent;
-  color: var(--osmos-ink);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.tab-btn.active {
-  background: var(--osmos-blue);
-  color: #fff;
-  border-color: var(--osmos-blue);
-}
-.tab-btn:hover:not(.active) {
-  border-color: var(--osmos-blue);
-  color: var(--osmos-blue);
-}
+/* Animations */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-.tab-content {
-  display: none;
-  animation: tabFade 0.4s ease;
-}
-.tab-content.active { display: block; }
-@keyframes tabFade {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ====== DEMO PAGE ====== */
+.demo-hero{background:var(--osmos-gradient);position:relative;overflow:hidden;padding:80px 48px 0;text-align:center}
+.demo-hero::before,.demo-hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+.demo-hero::before{width:1000px;height:1000px;border:1px solid rgba(255,255,255,.04)}
+.demo-hero::after{width:650px;height:650px;border:1px solid rgba(255,255,255,.03)}
+.demo-hero .section-eyebrow{color:var(--osmos-mint);position:relative;z-index:1}
+.demo-hero h1{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px;position:relative;z-index:1}
+.demo-hero h1 span{color:var(--osmos-mint)}
+.demo-hero>p{color:rgba(255,255,255,.75);font-size:clamp(15px,1.8vw,18px);max-width:560px;margin:0 auto;position:relative;z-index:1;padding-bottom:60px}
+.wave-divider{position:relative;z-index:2;margin-top:-1px}
+.wave-divider svg{display:block;width:100%;height:60px}
+.demo-content{padding:60px 48px 100px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+.demo-info{padding-top:12px}
+.demo-info h2{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--osmos-navy);margin-bottom:32px;line-height:1.3}
+.value-card{display:flex;gap:20px;align-items:flex-start;padding:24px;border-radius:14px;background:var(--osmos-bg-light);border:1px solid transparent;margin-bottom:16px;transition:border-color .3s,transform .3s}
+.value-card:hover{border-color:var(--osmos-lavender);transform:translateX(4px)}
+.value-icon{width:48px;height:48px;min-width:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.value-icon.blue{background:rgba(99,108,255,.12)}.value-icon.mint{background:rgba(137,241,217,.2)}.value-icon.lavender{background:rgba(177,181,255,.25)}.value-icon.purple{background:rgba(62,38,109,.1)}
+.value-card h4{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--osmos-navy);margin-bottom:4px}
+.value-card p{font-size:13.5px;color:var(--osmos-ink-2);line-height:1.55}
+.trusted-strip{margin-top:40px;padding-top:32px;border-top:1px solid var(--osmos-border)}
+.trusted-strip>span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--osmos-ink-3);display:block;margin-bottom:16px}
+.trusted-logos{display:flex;flex-wrap:wrap;gap:12px}
+.trusted-chip{background:var(--osmos-bg-light);border:1px solid var(--osmos-border);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--osmos-ink-2)}
 
-.tab-panel {
-  background: var(--osmos-bg-light);
-  border-radius: 20px;
-  padding: 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-.tab-panel h3 {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--osmos-navy);
-  margin-bottom: 24px;
-}
-.tab-panel h3 em {
-  color: var(--osmos-blue);
-  font-style: italic;
-}
-.tab-panel ul {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.tab-panel li {
-  font-size: 15px;
-  color: var(--osmos-ink-2);
-  padding-left: 24px;
-  position: relative;
-}
-.tab-panel li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--osmos-mint);
-}
-.tab-panel .explore-link {
-  display: inline-block;
-  margin-top: 24px;
-  font-weight: 700;
-  color: var(--osmos-blue);
-  font-size: 15px;
-  transition: gap 0.2s;
-}
-.tab-panel .explore-link:hover { text-decoration: underline; }
+/* Form */
+.demo-form-wrapper{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:20px;padding:44px 40px;box-shadow:0 4px 40px rgba(44,38,109,.06);position:relative}
+.demo-form-wrapper::before{content:'';position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,var(--osmos-blue),var(--osmos-mint),var(--osmos-lavender));z-index:-1;opacity:0;transition:opacity .4s}
+.demo-form-wrapper:focus-within::before{opacity:.5}
+.form-header{margin-bottom:32px}
+.form-header h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--osmos-navy);margin-bottom:6px}
+.form-header p{font-size:14px;color:var(--osmos-ink-2)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-size:13px;font-weight:700;color:var(--osmos-ink);margin-bottom:6px}
+.form-group .required{color:#C00;margin-left:2px}
+.form-group input,.form-group select,.form-group textarea{font-family:var(--font-body);font-size:14px;padding:12px 16px;border:1.5px solid var(--osmos-border);border-radius:10px;background:var(--osmos-bg-light);color:var(--osmos-ink);outline:none;transition:border-color .25s,box-shadow .25s,background .25s;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--osmos-blue);box-shadow:0 0 0 3px rgba(99,108,255,.12);background:#fff}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--osmos-ink-3)}
+.form-group input.error,.form-group select.error{border-color:#C00;box-shadow:0 0 0 3px rgba(204,0,0,.08)}
+.error-msg{font-size:12px;color:#C00;margin-top:4px;display:none}.error-msg.show{display:block}
+.form-group select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23595959' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-group textarea{resize:vertical;min-height:90px}
+.consent-group{display:flex;align-items:flex-start;gap:10px;margin:20px 0 28px}
+.consent-group input[type=checkbox]{width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:var(--osmos-blue);cursor:pointer}
+.consent-group label{font-size:13px;color:var(--osmos-ink-2);line-height:1.5;cursor:pointer}
+.consent-group label a{color:var(--osmos-blue);text-decoration:underline}
+.btn-submit{width:100%;padding:16px;border:none;border-radius:12px;background:var(--osmos-blue);color:#fff;font-family:var(--font-display);font-size:16px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;overflow:hidden}
+.btn-submit:hover:not(:disabled){background:var(--osmos-btn-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,108,255,.35)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+.btn-submit .spinner{display:none;width:20px;height:20px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+.btn-submit.loading .btn-text{display:none}.btn-submit.loading .spinner{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-success{display:none;text-align:center;padding:48px 24px;animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{0%{opacity:0;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
+.success-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--osmos-mint),#6EE7C0);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px}
+.form-success h3{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--osmos-navy);margin-bottom:8px}
+.form-success p{font-size:15px;color:var(--osmos-ink-2);max-width:380px;margin:0 auto 28px;line-height:1.6}
+.btn-back{display:inline-block;padding:12px 32px;border-radius:10px;background:var(--osmos-bg-light);color:var(--osmos-navy);font-weight:700;font-size:14px;border:1px solid var(--osmos-border);cursor:pointer;font-family:var(--font-body);transition:border-color .2s}
+.btn-back:hover{border-color:var(--osmos-blue)}
 
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 16px;
-}
-.app-chip {
-  background: var(--osmos-white);
-  border: 1px solid var(--osmos-border);
-  border-radius: 12px;
-  padding: 16px 12px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--osmos-ink);
-  transition: transform 0.2s, border-color 0.2s;
-}
-.app-chip:hover {
-  transform: translateY(-3px);
-  border-color: var(--osmos-blue);
-}
-.app-chip-icon {
-  width: 36px;
-  height: 36px;
-  margin: 0 auto 8px;
-  border-radius: 8px;
-  background: var(--osmos-lavender);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
+/* Proof bar */
+.proof-bar{background:var(--osmos-bg-light);border-top:1px solid var(--osmos-border);border-bottom:1px solid var(--osmos-border);padding:40px 48px}
+.proof-bar-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.proof-stat-number{font-family:var(--font-body);font-weight:300;font-size:40px;color:var(--osmos-blue);line-height:1;margin-bottom:6px}
+.proof-stat-label{font-size:13px;color:var(--osmos-ink-2)}
 
-/* ===== TESTIMONIALS ===== */
-.testimonials {
-  padding: 100px 48px;
-  background: var(--osmos-gradient);
-  text-align: center;
-  overflow: hidden;
-}
-.testimonials .section-eyebrow { color: var(--osmos-mint); }
-.testimonials .section-title { color: #fff; }
+/* FAQ */
+.faq-section{padding:80px 48px;max-width:800px;margin:0 auto}
+.faq-section h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--osmos-navy);text-align:center;margin-bottom:48px}
+.faq-item{border:1px solid var(--osmos-border);border-radius:14px;margin-bottom:12px;overflow:hidden;background:var(--osmos-white);transition:border-color .3s}
+.faq-item:hover{border-color:var(--osmos-lavender)}.faq-item.open{border-color:var(--osmos-blue)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;gap:16px;user-select:none}
+.faq-question h4{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--osmos-navy)}
+.faq-toggle{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--osmos-bg-light);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.faq-item.open .faq-toggle{transform:rotate(45deg);background:var(--osmos-blue)}
+.faq-item.open .faq-toggle svg line{stroke:#fff}
+.faq-toggle svg{width:14px;height:14px}
+.faq-toggle svg line{stroke:var(--osmos-ink-2);stroke-width:2;stroke-linecap:round}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 24px}
+.faq-answer p{font-size:14px;color:var(--osmos-ink-2);line-height:1.7;padding-bottom:20px}
+.faq-item.open .faq-answer{max-height:300px}
 
-.testimonial-slider {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-}
-.testimonial-card {
-  display: none;
-  animation: slideFade 0.5s ease;
-}
-.testimonial-card.active { display: block; }
-@keyframes slideFade {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-.testimonial-card blockquote {
-  font-size: 18px;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.7;
-  font-style: italic;
-  margin-bottom: 32px;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.testimonial-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--osmos-lavender);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--osmos-navy);
-  font-size: 18px;
-}
-.testimonial-name {
-  font-weight: 700;
-  color: #fff;
-  font-size: 16px;
-}
-.testimonial-role {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-}
-
-.slider-controls {
-  margin-top: 40px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-.slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-}
-.slider-dot.active {
-  background: var(--osmos-mint);
-  transform: scale(1.3);
-}
-
-/* ===== INTEGRATIONS ===== */
-.integrations {
-  padding: 100px 48px;
-  background: var(--osmos-white);
-  text-align: center;
-}
-.integrations .section-title { margin-bottom: 16px; }
-.integrations-subtitle {
-  font-size: 16px;
-  color: var(--osmos-ink-2);
-  margin-bottom: 48px;
-}
-.integration-logos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  max-width: 900px;
-  margin: 0 auto 48px;
-}
-.integration-pill {
-  background: var(--osmos-bg-light);
-  border: 1px solid var(--osmos-border);
-  border-radius: 12px;
-  padding: 14px 28px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--osmos-ink);
-  transition: transform 0.2s, border-color 0.2s;
-}
-.integration-pill:hover {
-  transform: translateY(-2px);
-  border-color: var(--osmos-blue);
-}
-
-.integration-features {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 48px;
-}
-.int-feature {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--osmos-ink);
-}
-.int-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--osmos-bg-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.int-feature-icon svg { width: 22px; height: 22px; stroke: var(--osmos-blue); fill: none; stroke-width: 2; }
-
-/* ===== INDUSTRIES ===== */
-.industries {
-  padding: 100px 48px;
-  background: var(--osmos-bg-light);
-  text-align: center;
-}
-
-.industry-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.industry-card {
-  background: var(--osmos-white);
-  border: 1px solid var(--osmos-border);
-  border-radius: 16px;
-  padding: 40px 28px;
-  text-align: center;
-  transition: transform 0.3s, border-color 0.3s;
-  cursor: pointer;
-}
-.industry-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--osmos-blue);
-}
-.industry-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: var(--osmos-bg-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-}
-.industry-card h4 {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--osmos-navy);
-}
-
-/* ===== TECH PROWESS ===== */
-.tech {
-  padding: 100px 48px;
-  background: var(--osmos-white);
-  text-align: center;
-}
-.tech-stats {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.tech-stat {
-  padding: 32px 16px;
-}
-.tech-stat-value {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 42px;
-  color: var(--osmos-blue);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.tech-stat-label {
-  font-size: 13px;
-  color: var(--osmos-ink-2);
-  line-height: 1.4;
-}
-
-/* ===== SECURITY ===== */
-.security {
-  padding: 100px 48px;
-  background: var(--osmos-bg-light);
-  text-align: center;
-}
-.compliance-badges {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-.compliance-badge {
-  width: 100px;
-  height: 100px;
-  border-radius: 16px;
-  background: var(--osmos-white);
-  border: 1px solid var(--osmos-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--osmos-navy);
-  text-align: center;
-  padding: 8px;
-  transition: transform 0.2s;
-}
-.compliance-badge:hover { transform: translateY(-4px); }
-
-.security-features {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-top: 40px;
-}
-.security-feat {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--osmos-ink);
-}
-.security-feat-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--osmos-mint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-/* ===== CTA SECTION ===== */
-.cta-section {
-  padding: 100px 48px;
-  background: var(--osmos-gradient);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-.cta-section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 1;
-}
-.cta-section p {
-  color: rgba(255,255,255,0.7);
-  font-size: 18px;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 900px;
-  margin: 0 auto 48px;
-  position: relative;
-  z-index: 1;
-}
-.cta-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 32px 24px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s, background 0.3s;
-}
-.cta-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.12);
-}
-.cta-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(137,241,217,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 22px;
-}
-.cta-card h4 {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.cta-card p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 0;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  background: var(--osmos-navy);
-  padding: 64px 48px 32px;
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
-}
-.footer-brand .nav-logo { color: #fff; margin-bottom: 16px; display: inline-block; }
-.footer-brand p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.6;
-  max-width: 280px;
-}
-.footer-socials {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-.footer-social {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.6);
-  font-size: 14px;
-  transition: border-color 0.2s, color 0.2s;
-}
-.footer-social:hover { border-color: var(--osmos-mint); color: var(--osmos-mint); }
-
-.footer-col h5 {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 20px;
-}
-.footer-col a {
-  display: block;
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-.footer-col a:hover { color: var(--osmos-mint); }
-
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-bottom p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-}
-.footer-bottom-links {
-  display: flex;
-  gap: 20px;
-}
-.footer-bottom-links a {
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-  transition: color 0.2s;
-}
-.footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
-
-/* ===== ANIMATIONS ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Counter animation */
-.counting { transition: none; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .tech-stats { grid-template-columns: repeat(3, 1fr); }
-  .tab-panel { grid-template-columns: 1fr; }
-  .industry-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  .navbar { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: #fff;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    z-index: 999;
-  }
-  .hero { padding: 80px 20px 60px; min-height: 80vh; }
-  .impact, .osmosphere, .testimonials, .integrations, .industries, .tech, .security, .cta-section { padding: 60px 20px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .tech-stats { grid-template-columns: repeat(2, 1fr); }
-  .cta-cards { grid-template-columns: 1fr; }
-  .industry-grid { grid-template-columns: 1fr; }
-  .hero-buttons, .cta-buttons { flex-direction: column; align-items: center; }
-  .tabs-nav { flex-wrap: wrap; }
-  .tab-panel { padding: 32px 24px; }
-  .integration-features { flex-direction: column; align-items: center; }
-  .security-features { flex-direction: column; align-items: center; }
-  .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-}
-
-@media (max-width: 480px) {
-  .stat-number { font-size: 40px; }
-  .tech-stat-value { font-size: 32px; }
-}
+/* Responsive */
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}.tech-stats{grid-template-columns:repeat(3,1fr)}.tab-panel{grid-template-columns:1fr}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-top{grid-template-columns:1fr 1fr}.demo-content{grid-template-columns:1fr;gap:48px}.proof-bar-inner{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.navbar{padding:0 20px}.nav-links{display:none}.hamburger{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:#fff;justify-content:center;align-items:center;gap:24px;z-index:999}.hero{padding:80px 20px 60px;min-height:80vh}.impact,.osmosphere,.testimonials,.integrations,.industries,.tech,.security,.cta-section{padding:60px 20px}.stats-grid{grid-template-columns:1fr 1fr}.tech-stats{grid-template-columns:repeat(2,1fr)}.cta-cards,.industry-grid{grid-template-columns:1fr}.hero-buttons,.cta-buttons{flex-direction:column;align-items:center}.tabs-nav{flex-wrap:wrap}.tab-panel{padding:32px 24px}.integration-features,.security-features{flex-direction:column;align-items:center}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}.demo-hero{padding:60px 20px 0}.demo-content{padding:40px 20px 60px}.demo-form-wrapper{padding:32px 24px}.form-row{grid-template-columns:1fr}.proof-bar{padding:32px 20px}.faq-section{padding:60px 20px}}
 </style>
 </head>
 <body>
 
-<!-- Announcement Bar -->
-<div class="announcement-bar">
-  Retail Media Lounge: A new space for retail media minds to meet and think together.
-  <a href="#">Join The Lounge &rarr;</a>
-</div>
-
-<!-- Navbar -->
+<!-- Shared Navbar -->
+<div class="announcement-bar" id="announcementBar">Retail Media Lounge: A new space for retail media minds to meet and think together. <a href="#">Join The Lounge &rarr;</a></div>
 <nav class="navbar" id="navbar">
-  <a href="#" class="nav-logo">osmos</a>
+  <a class="nav-logo" onclick="navigateTo('home')">osmos</a>
   <div class="nav-links" id="navLinks">
-    <a href="#osmosphere">OSMOSphere</a>
-    <a href="#industries">Solutions</a>
-    <a href="#tech">Technology</a>
-    <a href="#testimonials">Success Stories</a>
-    <a href="#">About Us</a>
-    <a href="#cta" class="nav-cta">Get a Demo</a>
+    <a onclick="navigateTo('home','osmosphere')">OSMOSphere</a>
+    <a onclick="navigateTo('home','industries')">Solutions</a>
+    <a onclick="navigateTo('home','tech')">Technology</a>
+    <a onclick="navigateTo('home','testimonials')">Success Stories</a>
+    <a onclick="navigateTo('home')">About Us</a>
+    <a class="nav-cta" onclick="navigateTo('demo')">Get a Demo</a>
   </div>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-orb hero-orb--1"></div>
-  <div class="hero-orb hero-orb--2"></div>
-  <h1>
-    <span>3X</span> Your Ad<br>Monetisation
-  </h1>
-  <p>Most RMNs stall at 0.5% GMV, an average Osmos customer does 3x. Ad tech experts from Amazon built the best-in-class retail media tech.</p>
-  <div class="hero-buttons">
-    <button class="btn-primary" onclick="location.href='#cta'">Schedule a Demo</button>
-    <button class="btn-outline" onclick="location.href='#osmosphere'">Explore Platform</button>
-  </div>
-</section>
+<!-- ==================== PAGE: HOME ==================== -->
+<div class="page active" id="page-home">
+<section class="hero"><div class="hero-orb hero-orb--1"></div><div class="hero-orb hero-orb--2"></div><h1><span>3X</span> Your Ad<br>Monetisation</h1><p>Most RMNs stall at 0.5% GMV, an average Osmos customer does 3x. Ad tech experts from Amazon built the best-in-class retail media tech.</p><div class="hero-buttons"><button class="btn-primary" onclick="navigateTo('demo')">Schedule a Demo</button><button class="btn-outline" onclick="navigateTo('home','osmosphere')">Explore Platform</button></div></section>
 
-<!-- Logo Ticker -->
-<div class="logo-ticker">
-  <div class="ticker-track" id="tickerTrack">
-    <span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span>
-    <span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span>
-    <span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span>
-    <span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span>
-    <span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span>
-    <span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span>
-  </div>
+<div class="logo-ticker"><div class="ticker-track"><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span></div></div>
+
+<section class="impact" id="impact"><div class="section-eyebrow reveal">The Osmos Impact</div><h2 class="section-title reveal">Increased Revenue. Reduced Cost.</h2><div class="stats-grid"><div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="3">0</span>x</div><div class="stat-label">Increase in Ad Revenues</div></div><div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="70">0</span>%</div><div class="stat-label">Increase in Advertiser Adoption</div></div><div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="8">0</span>x</div><div class="stat-label">Return on Ad Spends</div></div><div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="10">0</span>%</div><div class="stat-label">Of the Cost of Building In-House</div></div></div></section>
+
+<section class="osmosphere" id="osmosphere"><div class="section-eyebrow reveal">The App Store</div><h2 class="section-title reveal">How OSMOSphere makes it happen</h2><div class="tabs-container reveal"><div class="tabs-nav"><button class="tab-btn active" onclick="switchTab(0)">Adscape</button><button class="tab-btn" onclick="switchTab(1)">ControlHub</button><button class="tab-btn" onclick="switchTab(2)">StratEdge</button></div><div class="tab-content active"><div class="tab-panel"><div><h3><em>Adscape</em> for premium advertising experience</h3><ul><li>Omnichannel activation</li><li>First party targeting</li><li>Self serve campaigns</li><li>Full funnel reporting</li></ul><a href="#" class="explore-link">Explore OSMOSphere &rarr;</a></div><div class="app-grid"><div class="app-chip"><div class="app-chip-icon">🎯</div>Product Ads</div><div class="app-chip"><div class="app-chip-icon">🖼️</div>Display Ads</div><div class="app-chip"><div class="app-chip-icon">📦</div>Product Display</div><div class="app-chip"><div class="app-chip-icon">🎥</div>Video Ads</div><div class="app-chip"><div class="app-chip-icon">📧</div>Email Ads</div><div class="app-chip"><div class="app-chip-icon">🎮</div>Gamified Ads</div><div class="app-chip"><div class="app-chip-icon">🌐</div>Offsite Ads</div><div class="app-chip"><div class="app-chip-icon">📸</div>Story Ads</div><div class="app-chip"><div class="app-chip-icon">🏬</div>In-Store Ads</div><div class="app-chip"><div class="app-chip-icon" style="background:#89F1D9">🎠</div>Carousel Ads</div></div></div></div><div class="tab-content"><div class="tab-panel"><div><h3><em>ControlHub</em> to scale your retail media operations</h3><ul><li>Billing &amp; collection</li><li>Campaign review process</li><li>Feature access management</li><li>Onboarding workflows</li></ul><a href="#" class="explore-link">Explore OSMOSphere &rarr;</a></div><div class="app-grid"><div class="app-chip"><div class="app-chip-icon">💰</div>Wallet Wise</div><div class="app-chip"><div class="app-chip-icon">🎵</div>Brand Jukebox</div><div class="app-chip"><div class="app-chip-icon">🛡️</div>Content Cop</div><div class="app-chip"><div class="app-chip-icon">🚀</div>Onboard Pro</div></div></div></div><div class="tab-content"><div class="tab-panel"><div><h3><em>StratEdge</em> levers for ad revenue maximisation</h3><ul><li>Yield management</li><li>Inventory management</li><li>Demand intelligence</li><li>House ads &amp; BYOT</li></ul><a href="#" class="explore-link">Explore OSMOSphere &rarr;</a></div><div class="app-grid"><div class="app-chip"><div class="app-chip-icon">📊</div>Pulse Pro</div><div class="app-chip"><div class="app-chip-icon">📈</div>Demand Wise</div><div class="app-chip"><div class="app-chip-icon">🏠</div>House Ads</div><div class="app-chip"><div class="app-chip-icon">🔌</div>BYOT</div><div class="app-chip"><div class="app-chip-icon">👑</div>King of the Hill</div></div></div></div></div></section>
+
+<section class="testimonials" id="testimonials"><div class="section-eyebrow reveal">Client Testimonials</div><h2 class="section-title reveal">Real stories, real results</h2><div class="testimonial-slider reveal"><div class="testimonial-card active"><blockquote>"Healthcare e-commerce requires a strong foundation of trust. Osmos has been instrumental in enabling better targeting and the structure needed to build retail media as a credible revenue stream."</blockquote><div class="testimonial-author"><div class="testimonial-avatar">PR</div><div><div class="testimonial-name">Prateek Rai</div><div class="testimonial-role">AVP, TrueMeds</div></div></div></div><div class="testimonial-card"><blockquote>"Osmos has been a core enabler of our retail media growth. It helped us scale and monetize inventory efficiently, especially during peak moments."</blockquote><div class="testimonial-author"><div class="testimonial-avatar">AP</div><div><div class="testimonial-name">Akshat Patni</div><div class="testimonial-role">Manager - Media Monetization, Purplle</div></div></div></div><div class="testimonial-card"><blockquote>"Osmos enabled a seamless transition with bespoke features, helping unlock over $12K in incremental advertiser budgets."</blockquote><div class="testimonial-author"><div class="testimonial-avatar">SS</div><div><div class="testimonial-name">Shivani Singh</div><div class="testimonial-role">Ad-Ops Manager, Rapido</div></div></div></div><div class="testimonial-card"><blockquote>"Osmos helped Apollo 24|7 build a more transparent and performance-driven retail media program contributing to 2x growth in participating brands."</blockquote><div class="testimonial-author"><div class="testimonial-avatar">TY</div><div><div class="testimonial-name">Tushar Yadav</div><div class="testimonial-role">DGM, Apollo 24|7</div></div></div></div></div><div class="slider-controls"><button class="slider-dot active" onclick="goToSlide(0)"></button><button class="slider-dot" onclick="goToSlide(1)"></button><button class="slider-dot" onclick="goToSlide(2)"></button><button class="slider-dot" onclick="goToSlide(3)"></button></div></section>
+
+<section class="integrations"><div class="section-eyebrow reveal">Seamless Integration</div><h2 class="section-title reveal">Works with your existing stack</h2><p class="integrations-subtitle reveal">Plug into DSPs, commerce platforms, data tools and clean rooms.</p><div class="integration-logos reveal"><div class="integration-pill">Google Ads</div><div class="integration-pill">Meta</div><div class="integration-pill">The Trade Desk</div><div class="integration-pill">Criteo</div><div class="integration-pill">Shopify</div><div class="integration-pill">Magento</div><div class="integration-pill">BigCommerce</div><div class="integration-pill">Snowflake</div><div class="integration-pill">AWS</div><div class="integration-pill">GCP</div><div class="integration-pill">Segment</div><div class="integration-pill">Salesforce</div></div><div class="integration-features reveal"><div class="int-feature"><div class="int-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>Open APIs</div><div class="int-feature"><div class="int-feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>Modular Adapters</div><div class="int-feature"><div class="int-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg></div>Compute-to-Data</div></div></section>
+
+<section class="industries" id="industries"><div class="section-eyebrow reveal">Industries We Cater</div><h2 class="section-title reveal">Your unique needs, solved</h2><div class="industry-grid"><div class="industry-card reveal"><div class="industry-icon">🛒</div><h4>Omnichannel Retailer<br>(Grocery & Pharma)</h4></div><div class="industry-card reveal"><div class="industry-icon">🛍️</div><h4>E-commerce<br>Marketplaces</h4></div><div class="industry-card reveal"><div class="industry-icon">🍕</div><h4>Restaurant<br>Marketplaces</h4></div><div class="industry-card reveal"><div class="industry-icon">📺</div><h4>OTT<br>Platforms</h4></div><div class="industry-card reveal"><div class="industry-icon">👗</div><h4>Specialty<br>Retailers</h4></div><div class="industry-card reveal"><div class="industry-icon">📱</div><h4>Super<br>Apps</h4></div></div></section>
+
+<section class="tech" id="tech"><div class="section-eyebrow reveal">Tech Prowess</div><h2 class="section-title reveal">Osmos — built for scale</h2><div class="tech-stats"><div class="tech-stat reveal"><div class="tech-stat-value">15-20ms</div><div class="tech-stat-label">P95 Latency</div></div><div class="tech-stat reveal"><div class="tech-stat-value">2Bn</div><div class="tech-stat-label">SKUs / day</div></div><div class="tech-stat reveal"><div class="tech-stat-value">25Bn</div><div class="tech-stat-label">Ad auctions / month</div></div><div class="tech-stat reveal"><div class="tech-stat-value">50Bn</div><div class="tech-stat-label">Shopper events / month</div></div><div class="tech-stat reveal"><div class="tech-stat-value">250Bn</div><div class="tech-stat-label">Decisions / month</div></div></div></section>
+
+<section class="security"><div class="section-eyebrow reveal">Security & Services</div><h2 class="section-title reveal">Our commitment</h2><div class="compliance-badges reveal"><div class="compliance-badge">GDPR<br>Compliant</div><div class="compliance-badge">ISO<br>27001</div><div class="compliance-badge">DPDPA<br>Compliant</div><div class="compliance-badge">SOC 2<br>Type II</div><div class="compliance-badge">CCPA<br>Compliant</div></div><div class="security-features reveal"><div class="security-feat"><div class="security-feat-icon">🍪</div>Cookie-less</div><div class="security-feat"><div class="security-feat-icon">🔒</div>Walled Garden</div></div></section>
+
+<section class="cta-section"><h2 class="reveal">Your dream retail media platform<br>live in 4 weeks</h2><p class="reveal">Get started with Osmos — the fastest path to retail media monetisation.</p><div class="cta-cards reveal"><div class="cta-card"><div class="cta-card-icon">⚡</div><h4>API Hub</h4><p>Use our API to create your own stack</p></div><div class="cta-card"><div class="cta-card-icon">🚀</div><h4>Turnkey Solution</h4><p>Get started immediately</p></div><div class="cta-card"><div class="cta-card-icon">🛠️</div><h4>Custom Solution</h4><p>Let our experts build for you</p></div></div><div class="cta-buttons reveal"><button class="btn-primary" onclick="navigateTo('demo')">Talk to Our Experts</button><button class="btn-outline" onclick="navigateTo('demo')">Get a Demo</button></div></section>
+
+<footer class="footer"><div class="footer-top"><div class="footer-brand"><a class="nav-logo" onclick="navigateTo('home')">osmos</a><p>The omnichannel retail media operating system.</p><div class="footer-socials"><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">in</a><a href="#" class="footer-social">▶</a><a href="#" class="footer-social">📷</a></div></div><div class="footer-col"><h5>Platform</h5><a href="#">OSMOSphere</a><a href="#">Adscape</a><a href="#">ControlHub</a><a href="#">StratEdge</a></div><div class="footer-col"><h5>Solutions</h5><a href="#">Grocery Retailers</a><a href="#">Fashion & Beauty</a><a href="#">Restaurant Aggregators</a><a href="#">OTT Platforms</a></div><div class="footer-col"><h5>Company</h5><a href="#">Our Team</a><a href="#">Careers</a><a href="#">Partners</a><a href="#">Blog</a></div></div><div class="footer-bottom"><p>&copy; 2026 OSMOS. All Rights Reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">DPA</a></div></div></footer>
 </div>
 
-<!-- Impact Section -->
-<section class="impact" id="impact">
-  <div class="section-eyebrow reveal">The Osmos Impact</div>
-  <h2 class="section-title reveal">Increased Revenue. Reduced Cost.</h2>
-  <div class="stats-grid">
-    <div class="stat-card reveal">
-      <div class="stat-number"><span class="counter" data-target="3">0</span>x</div>
-      <div class="stat-label">Increase in Ad Revenues</div>
-    </div>
-    <div class="stat-card reveal">
-      <div class="stat-number"><span class="counter" data-target="70">0</span>%</div>
-      <div class="stat-label">Increase in Advertiser Adoption</div>
-    </div>
-    <div class="stat-card reveal">
-      <div class="stat-number"><span class="counter" data-target="8">0</span>x</div>
-      <div class="stat-label">Return on Ad Spends</div>
-    </div>
-    <div class="stat-card reveal">
-      <div class="stat-number"><span class="counter" data-target="10">0</span>%</div>
-      <div class="stat-label">Of the Cost of Building In-House</div>
-    </div>
-  </div>
+<!-- ==================== PAGE: DEMO ==================== -->
+<div class="page" id="page-demo">
+<section class="demo-hero"><div class="hero-orb hero-orb--1"></div><div class="hero-orb hero-orb--2"></div><div class="section-eyebrow reveal">Get started with osmos</div><h1 class="reveal">See how Osmos can <span>3x</span> your<br>ad monetisation</h1><p class="reveal">Book a personalised demo with our retail media experts. We'll walk you through how OSMOSphere fits your platform — live.</p></section>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#fff"/></svg></div>
+
+<div class="demo-content">
+<div class="demo-info reveal"><h2>What you'll get in your personalised demo</h2>
+<div class="value-card"><div class="value-icon blue">🎯</div><div><h4>Custom revenue model</h4><p>Revenue projection tailored to your GMV, category mix, and current ad monetisation rate.</p></div></div>
+<div class="value-card"><div class="value-icon mint">🧩</div><div><h4>Platform walkthrough</h4><p>Live demo of Adscape, ControlHub, and StratEdge — mapped to your use case.</p></div></div>
+<div class="value-card"><div class="value-icon lavender">⚡</div><div><h4>Go-live timeline</h4><p>A clear 4-week implementation plan. Turnkey, API, or custom.</p></div></div>
+<div class="value-card"><div class="value-icon purple">📊</div><div><h4>Benchmark report</h4><p>See how your metrics stack up against industry peers.</p></div></div>
+<div class="trusted-strip"><span>Trusted by leading platforms</span><div class="trusted-logos"><div class="trusted-chip">Purplle</div><div class="trusted-chip">Apollo 24|7</div><div class="trusted-chip">TrueMeds</div><div class="trusted-chip">Rapido</div><div class="trusted-chip">Spencer's</div><div class="trusted-chip">BigBasket</div></div></div></div>
+
+<div class="demo-form-wrapper reveal">
+<div id="formContent"><div class="form-header"><h3>Request your demo</h3><p>Fill in a few details and we'll reach out within 24 hours.</p></div>
+<div class="form-row"><div class="form-group"><label>First name <span class="required">*</span></label><input type="text" id="firstName" placeholder="Jane"><span class="error-msg" id="firstNameError">Please enter your first name</span></div><div class="form-group"><label>Last name <span class="required">*</span></label><input type="text" id="lastName" placeholder="Smith"><span class="error-msg" id="lastNameError">Please enter your last name</span></div></div>
+<div class="form-row full"><div class="form-group"><label>Work email <span class="required">*</span></label><input type="email" id="workEmail" placeholder="jane@company.com"><span class="error-msg" id="workEmailError">Please enter a valid work email</span></div></div>
+<div class="form-row"><div class="form-group"><label>Company name <span class="required">*</span></label><input type="text" id="companyName" placeholder="Acme Retail"><span class="error-msg" id="companyNameError">Please enter your company name</span></div><div class="form-group"><label>Job title</label><input type="text" id="jobTitle" placeholder="Head of Retail Media"></div></div>
+<div class="form-row"><div class="form-group"><label>Industry <span class="required">*</span></label><select id="industry"><option value="" disabled selected>Select your industry</option><option>Grocery / Pharma Retail</option><option>E-commerce Marketplace</option><option>Restaurant Aggregator</option><option>OTT Platform</option><option>Fashion & Beauty</option><option>Super App</option><option>Other</option></select><span class="error-msg" id="industryError">Please select an industry</span></div><div class="form-group"><label>Monthly GMV</label><select id="gmv"><option value="" disabled selected>Select range</option><option>Under $1M</option><option>$1M – $10M</option><option>$10M – $50M</option><option>$50M – $200M</option><option>$200M+</option></select></div></div>
+<div class="form-row full"><div class="form-group"><label>What are you looking for?</label><textarea id="message" placeholder="Tell us about your retail media goals or challenges..."></textarea></div></div>
+<div class="consent-group"><input type="checkbox" id="consent"><label for="consent">I agree to Osmos' <a href="#">Privacy Policy</a> and consent to being contacted.</label></div>
+<button class="btn-submit" id="submitBtn" onclick="handleSubmit()"><span class="btn-text">Book my demo</span><span class="spinner"></span></button>
+</div>
+<div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h3>You're all set!</h3><p>Our retail media experts will reach out within 24 hours to schedule your personalised demo.</p><button class="btn-back" onclick="navigateTo('home')">Back to homepage</button></div>
+</div>
+</div>
+
+<div class="proof-bar"><div class="proof-bar-inner"><div class="reveal"><div class="proof-stat-number">3x</div><div class="proof-stat-label">Increase in ad revenues</div></div><div class="reveal"><div class="proof-stat-number">70%</div><div class="proof-stat-label">Advertiser adoption</div></div><div class="reveal"><div class="proof-stat-number">8x</div><div class="proof-stat-label">Return on ad spends</div></div><div class="reveal"><div class="proof-stat-number">4 wks</div><div class="proof-stat-label">Time to go live</div></div></div></div>
+
+<section class="faq-section"><h2 class="reveal">Frequently asked questions</h2>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)"><h4>How long does the demo take?</h4><div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div><div class="faq-answer"><p>A typical demo runs 30–45 minutes with a live walkthrough tailored to your industry.</p></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)"><h4>How quickly can we go live?</h4><div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div><div class="faq-answer"><p>Most customers go live within 4 weeks. Custom integrations may take 6–8 weeks.</p></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)"><h4>Do I need to replace my existing tech stack?</h4><div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div><div class="faq-answer"><p>No. Osmos integrates with your existing DSPs, commerce platforms, and data tools. Zero rip-and-replace.</p></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)"><h4>What industries does Osmos support?</h4><div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div><div class="faq-answer"><p>Grocery, pharma, e-commerce, restaurant aggregators, OTT, fashion & beauty, and super apps.</p></div></div>
+<div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)"><h4>Is my data secure?</h4><div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div><div class="faq-answer"><p>SOC 2 Type II, ISO 27001, GDPR, CCPA, DPDPA compliant. Cookie-less walled garden.</p></div></div>
 </section>
 
-<!-- OSMOSphere -->
-<section class="osmosphere" id="osmosphere">
-  <div class="section-eyebrow reveal">The App Store</div>
-  <h2 class="section-title reveal">How OSMOSphere makes it happen</h2>
+<footer class="footer"><div class="footer-top"><div class="footer-brand"><a class="nav-logo" onclick="navigateTo('home')">osmos</a><p>The omnichannel retail media operating system.</p><div class="footer-socials"><a href="#" class="footer-social">𝕏</a><a href="#" class="footer-social">in</a><a href="#" class="footer-social">▶</a><a href="#" class="footer-social">📷</a></div></div><div class="footer-col"><h5>Platform</h5><a href="#">OSMOSphere</a><a href="#">Adscape</a><a href="#">ControlHub</a><a href="#">StratEdge</a></div><div class="footer-col"><h5>Solutions</h5><a href="#">Grocery Retailers</a><a href="#">Fashion & Beauty</a><a href="#">Restaurant Aggregators</a><a href="#">OTT Platforms</a></div><div class="footer-col"><h5>Company</h5><a href="#">Our Team</a><a href="#">Careers</a><a href="#">Partners</a><a href="#">Blog</a></div></div><div class="footer-bottom"><p>&copy; 2026 OSMOS. All Rights Reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">DPA</a></div></div></footer>
+</div>
 
-  <div class="tabs-container reveal">
-    <div class="tabs-nav">
-      <button class="tab-btn active" onclick="switchTab(0)">Adscape</button>
-      <button class="tab-btn" onclick="switchTab(1)">ControlHub</button>
-      <button class="tab-btn" onclick="switchTab(2)">StratEdge</button>
-    </div>
-
-    <!-- Adscape -->
-    <div class="tab-content active">
-      <div class="tab-panel">
-        <div>
-          <h3><em>Adscape</em> for premium advertising experience</h3>
-          <ul>
-            <li>Omnichannel activation</li>
-            <li>First party targeting</li>
-            <li>Self serve campaigns</li>
-            <li>Full funnel reporting</li>
-          </ul>
-          <a href="#" class="explore-link">Explore OSMOSphere &rarr;</a>
-        </div>
-        <div class="app-grid">
-          <div class="app-chip"><div class="app-chip-icon">🎯</div>Product Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">🖼️</div>Display Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">📦</div>Product Display</div>
-          <div class="app-chip"><div class="app-chip-icon">🎥</div>Video Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">📧</div>Email Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">🎮</div>Gamified Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">🌐</div>Offsite Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">📸</div>Story Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">🏬</div>In-Store Ads</div>
-          <div class="app-chip"><div class="app-chip-icon" style="background:#89F1D9;">🎠</div>Carousel Ads</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ControlHub -->
-    <div class="tab-content">
-      <div class="tab-panel">
-        <div>
-          <h3><em>ControlHub</em> to scale your retail media operations</h3>
-          <ul>
-            <li>Billing &amp; collection</li>
-            <li>Campaign review process</li>
-            <li>Feature access management</li>
-            <li>Onboarding workflows</li>
-          </ul>
-          <a href="#" class="explore-link">Explore OSMOSphere &rarr;</a>
-        </div>
-        <div class="app-grid">
-          <div class="app-chip"><div class="app-chip-icon">💰</div>Wallet Wise</div>
-          <div class="app-chip"><div class="app-chip-icon">🎵</div>Brand Jukebox</div>
-          <div class="app-chip"><div class="app-chip-icon">🛡️</div>Content Cop</div>
-          <div class="app-chip"><div class="app-chip-icon">🚀</div>Onboard Pro</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- StratEdge -->
-    <div class="tab-content">
-      <div class="tab-panel">
-        <div>
-          <h3><em>StratEdge</em> levers for ad revenue maximisation</h3>
-          <ul>
-            <li>Yield management</li>
-            <li>Inventory management</li>
-            <li>Demand intelligence</li>
-            <li>House ads &amp; BYOT</li>
-          </ul>
-          <a href="#" class="explore-link">Explore OSMOSphere &rarr;</a>
-        </div>
-        <div class="app-grid">
-          <div class="app-chip"><div class="app-chip-icon">📊</div>Pulse Pro</div>
-          <div class="app-chip"><div class="app-chip-icon">📈</div>Demand Wise</div>
-          <div class="app-chip"><div class="app-chip-icon">🏠</div>House Ads</div>
-          <div class="app-chip"><div class="app-chip-icon">🔌</div>BYOT</div>
-          <div class="app-chip"><div class="app-chip-icon">👑</div>King of the Hill</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials" id="testimonials">
-  <div class="section-eyebrow reveal">Client Testimonials</div>
-  <h2 class="section-title reveal">Real stories, real results</h2>
-
-  <div class="testimonial-slider reveal">
-    <div class="testimonial-card active">
-      <blockquote>"Healthcare e-commerce requires a strong foundation of trust, relevance and compliance. Osmos has been instrumental in enabling better targeting, stronger execution and the structure needed to build retail media as a credible revenue stream."</blockquote>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">PR</div>
-        <div>
-          <div class="testimonial-name">Prateek Rai</div>
-          <div class="testimonial-role">AVP, TrueMeds</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <blockquote>"Osmos has been a core enabler of our retail media growth. It has helped us scale and monetize inventory efficiently, especially during peak moments. We've seen stronger ROI tracking and exceptional hands-on support throughout."</blockquote>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">AP</div>
-        <div>
-          <div class="testimonial-name">Akshat Patni</div>
-          <div class="testimonial-role">Manager - Media Monetization, Purplle</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <blockquote>"Osmos enabled a seamless transition with bespoke features, helping unlock over $12K in incremental advertiser budgets and scale our program with confidence."</blockquote>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">SS</div>
-        <div>
-          <div class="testimonial-name">Shivani Singh</div>
-          <div class="testimonial-role">Ad-Ops Manager, Rapido</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <blockquote>"Osmos has helped Apollo 24|7 build a more transparent and performance-driven retail media program. Their platform's performance tracking, clearer attribution and self-serve capabilities have contributed to 2x growth in participating brands."</blockquote>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">TY</div>
-        <div>
-          <div class="testimonial-name">Tushar Yadav</div>
-          <div class="testimonial-role">DGM, Apollo 24|7</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="slider-controls">
-    <button class="slider-dot active" onclick="goToSlide(0)"></button>
-    <button class="slider-dot" onclick="goToSlide(1)"></button>
-    <button class="slider-dot" onclick="goToSlide(2)"></button>
-    <button class="slider-dot" onclick="goToSlide(3)"></button>
-  </div>
-</section>
-
-<!-- Integrations -->
-<section class="integrations">
-  <div class="section-eyebrow reveal">Seamless Integration</div>
-  <h2 class="section-title reveal">Works with your existing stack</h2>
-  <p class="integrations-subtitle reveal">Plug into DSPs, commerce platforms, data tools and clean rooms. No rip and replace.</p>
-
-  <div class="integration-logos reveal">
-    <div class="integration-pill">Google Ads</div>
-    <div class="integration-pill">Meta</div>
-    <div class="integration-pill">The Trade Desk</div>
-    <div class="integration-pill">Criteo</div>
-    <div class="integration-pill">Shopify</div>
-    <div class="integration-pill">Magento</div>
-    <div class="integration-pill">BigCommerce</div>
-    <div class="integration-pill">Snowflake</div>
-    <div class="integration-pill">AWS</div>
-    <div class="integration-pill">GCP</div>
-    <div class="integration-pill">Segment</div>
-    <div class="integration-pill">Salesforce</div>
-  </div>
-
-  <div class="integration-features reveal">
-    <div class="int-feature">
-      <div class="int-feature-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg>
-      </div>
-      Open APIs
-    </div>
-    <div class="int-feature">
-      <div class="int-feature-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      </div>
-      Modular Adapters
-    </div>
-    <div class="int-feature">
-      <div class="int-feature-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg>
-      </div>
-      Compute-to-Data
-    </div>
-  </div>
-</section>
-
-<!-- Industries -->
-<section class="industries" id="industries">
-  <div class="section-eyebrow reveal">Industries We Cater</div>
-  <h2 class="section-title reveal">Your unique needs, solved</h2>
-
-  <div class="industry-grid">
-    <div class="industry-card reveal">
-      <div class="industry-icon">🛒</div>
-      <h4>Omnichannel Retailer<br>(Grocery & Pharma)</h4>
-    </div>
-    <div class="industry-card reveal">
-      <div class="industry-icon">🛍️</div>
-      <h4>E-commerce<br>Marketplaces</h4>
-    </div>
-    <div class="industry-card reveal">
-      <div class="industry-icon">🍕</div>
-      <h4>Restaurant<br>Marketplaces</h4>
-    </div>
-    <div class="industry-card reveal">
-      <div class="industry-icon">📺</div>
-      <h4>OTT<br>Platforms</h4>
-    </div>
-    <div class="industry-card reveal">
-      <div class="industry-icon">👗</div>
-      <h4>Specialty<br>Retailers</h4>
-    </div>
-    <div class="industry-card reveal">
-      <div class="industry-icon">📱</div>
-      <h4>Super<br>Apps</h4>
-    </div>
-  </div>
-</section>
-
-<!-- Tech Prowess -->
-<section class="tech" id="tech">
-  <div class="section-eyebrow reveal">Tech Prowess</div>
-  <h2 class="section-title reveal">Osmos — built for scale</h2>
-
-  <div class="tech-stats">
-    <div class="tech-stat reveal">
-      <div class="tech-stat-value">15-20ms</div>
-      <div class="tech-stat-label">P95 Latency at scale</div>
-    </div>
-    <div class="tech-stat reveal">
-      <div class="tech-stat-value">2Bn</div>
-      <div class="tech-stat-label">SKUs per day</div>
-    </div>
-    <div class="tech-stat reveal">
-      <div class="tech-stat-value">25Bn</div>
-      <div class="tech-stat-label">Real-time ad auctions / month</div>
-    </div>
-    <div class="tech-stat reveal">
-      <div class="tech-stat-value">50Bn</div>
-      <div class="tech-stat-label">Shopper events / month</div>
-    </div>
-    <div class="tech-stat reveal">
-      <div class="tech-stat-value">250Bn</div>
-      <div class="tech-stat-label">Decision points / month</div>
-    </div>
-  </div>
-</section>
-
-<!-- Security -->
-<section class="security">
-  <div class="section-eyebrow reveal">Security & Services</div>
-  <h2 class="section-title reveal">Our commitment</h2>
-
-  <div class="compliance-badges reveal">
-    <div class="compliance-badge">GDPR<br>Compliant</div>
-    <div class="compliance-badge">ISO<br>27001</div>
-    <div class="compliance-badge">DPDPA<br>Compliant</div>
-    <div class="compliance-badge">SOC 2<br>Type II</div>
-    <div class="compliance-badge">CCPA<br>Compliant</div>
-  </div>
-
-  <div class="security-features reveal">
-    <div class="security-feat">
-      <div class="security-feat-icon">🍪</div>
-      Cookie-less
-    </div>
-    <div class="security-feat">
-      <div class="security-feat-icon">🔒</div>
-      Walled Garden
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="cta">
-  <h2 class="reveal">Your dream retail media platform<br>live in 4 weeks</h2>
-  <p class="reveal">Get started with Osmos — the fastest path to retail media monetisation.</p>
-
-  <div class="cta-cards reveal">
-    <div class="cta-card">
-      <div class="cta-card-icon">⚡</div>
-      <h4>API Hub</h4>
-      <p>Use our API to create your own stack</p>
-    </div>
-    <div class="cta-card">
-      <div class="cta-card-icon">🚀</div>
-      <h4>Turnkey Solution</h4>
-      <p>Get started immediately with a ready-to-go platform</p>
-    </div>
-    <div class="cta-card">
-      <div class="cta-card-icon">🛠️</div>
-      <h4>Custom Solution</h4>
-      <p>Let our in-house experts build a custom solution for you</p>
-    </div>
-  </div>
-
-  <div class="cta-buttons reveal">
-    <button class="btn-primary">Talk to Our Experts</button>
-    <button class="btn-outline">Get a Demo</button>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="nav-logo">osmos</a>
-      <p>The omnichannel retail media operating system. Built by ad tech experts from Amazon.</p>
-      <div class="footer-socials">
-        <a href="#" class="footer-social">𝕏</a>
-        <a href="#" class="footer-social">in</a>
-        <a href="#" class="footer-social">▶</a>
-        <a href="#" class="footer-social">📷</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h5>Platform</h5>
-      <a href="#">OSMOSphere</a>
-      <a href="#">Adscape</a>
-      <a href="#">ControlHub</a>
-      <a href="#">StratEdge</a>
-    </div>
-    <div class="footer-col">
-      <h5>Solutions</h5>
-      <a href="#">Grocery Retailers</a>
-      <a href="#">Fashion & Beauty</a>
-      <a href="#">Restaurant Aggregators</a>
-      <a href="#">OTT Platforms</a>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <a href="#">Our Team</a>
-      <a href="#">Careers</a>
-      <a href="#">Partners</a>
-      <a href="#">Blog</a>
-      <a href="#">Resources</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 OSMOS. All Rights Reserved.</p>
-    <div class="footer-bottom-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Cookie Policy</a>
-      <a href="#">DPA</a>
-    </div>
-  </div>
-</footer>
-
+<!-- ==================== JAVASCRIPT ==================== -->
 <script>
-// ===== Navbar scroll effect =====
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// ===== Mobile menu =====
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
+// Page Router
+function navigateTo(page, scrollTo){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('navLinks').classList.remove('open');
+  if(scrollTo) setTimeout(()=>{const el=document.getElementById(scrollTo);if(el)el.scrollIntoView({behavior:'smooth'})},100);
+  document.getElementById('announcementBar').style.display=page==='home'?'block':'none';
+  document.title=page==='demo'?'Get a Demo — Osmos':'Osmos — Retail Media Tech';
+  posthog.capture('$pageview',{page,section:scrollTo||null});
+  setTimeout(initReveals,150);
 }
 
-// ===== Tab switching =====
-function switchTab(index) {
-  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-    btn.classList.toggle('active', i === index);
-  });
-  document.querySelectorAll('.tab-content').forEach((tab, i) => {
-    tab.classList.toggle('active', i === index);
-  });
+// Navbar
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+
+// Tabs
+function switchTab(i){document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',j===i));document.querySelectorAll('.tab-content').forEach((t,j)=>t.classList.toggle('active',j===i));posthog.capture('osmosphere_tab_viewed',{tab_name:['Adscape','ControlHub','StratEdge'][i]})}
+
+// Slider
+let cur=0;const slides=document.querySelectorAll('.testimonial-card'),dots=document.querySelectorAll('.slider-dot');
+function goToSlide(i){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=i;slides[cur].classList.add('active');dots[cur].classList.add('active')}
+setInterval(()=>goToSlide((cur+1)%slides.length),5000);
+
+// Reveal
+function initReveals(){const els=document.querySelectorAll('.page.active .reveal:not(.visible)');const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.15});els.forEach(el=>obs.observe(el))}
+initReveals();
+
+// Counters
+document.querySelectorAll('.counter').forEach(c=>{new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const t=+c.dataset.target,s=performance.now();(function u(n){const p=Math.min((n-s)/1500,1);c.textContent=Math.round((1-Math.pow(1-p,3))*t);if(p<1)requestAnimationFrame(u)})(s);en.target._obs&&en.target._obs.unobserve(en.target)}})},{threshold:.5}).observe(c)});
+
+// FAQ
+function toggleFaq(el){const item=el.closest('.faq-item'),open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open){item.classList.add('open');posthog.capture('faq_opened',{question:el.querySelector('h4').textContent.trim()})}}
+
+// Form
+function validateEmail(e){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return false;const free=['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com'];return!free.includes(e.split('@')[1]?.toLowerCase())}
+function clearErrors(){document.querySelectorAll('.error-msg').forEach(e=>e.classList.remove('show'));document.querySelectorAll('#page-demo input,#page-demo select').forEach(e=>e.classList.remove('error'))}
+function showError(f,m){document.getElementById(f).classList.add('error');document.getElementById(m).classList.add('show')}
+function handleSubmit(){
+  clearErrors();let ok=true;
+  const v=id=>document.getElementById(id).value.trim();
+  const fn=v('firstName'),ln=v('lastName'),em=v('workEmail'),co=v('companyName'),ind=document.getElementById('industry').value;
+  if(!fn){showError('firstName','firstNameError');ok=false}
+  if(!ln){showError('lastName','lastNameError');ok=false}
+  if(!validateEmail(em)){document.getElementById('workEmailError').textContent=em?'Please use your work email':'Please enter your work email';showError('workEmail','workEmailError');ok=false}
+  if(!co){showError('companyName','companyNameError');ok=false}
+  if(!ind){showError('industry','industryError');ok=false}
+  if(!ok){posthog.capture('demo_form_validation_failed');return}
+  const btn=document.getElementById('submitBtn');btn.classList.add('loading');btn.disabled=true;
+  const data={first_name:fn,last_name:ln,email:em,company:co,job_title:v('jobTitle'),industry:ind,gmv:document.getElementById('gmv').value,message:v('message')};
+  posthog.capture('demo_form_submitted',data);
+  posthog.identify(em,{...data,source:'demo_form'});
+  setTimeout(()=>{btn.classList.remove('loading');document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';posthog.capture('demo_form_success',{company:co,industry:ind})},1800);
 }
 
-// ===== Testimonial slider =====
-let currentSlide = 0;
-const slides = document.querySelectorAll('.testimonial-card');
-const dots = document.querySelectorAll('.slider-dot');
+// Form start tracking
+let formStarted=false;
+document.querySelectorAll('#page-demo input,#page-demo select,#page-demo textarea').forEach(el=>{el.addEventListener('focus',()=>{if(!formStarted){formStarted=true;posthog.capture('demo_form_started')}})});
 
-function goToSlide(index) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = index;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-setInterval(() => {
-  goToSlide((currentSlide + 1) % slides.length);
-}, 5000);
-
-// ===== Reveal on scroll =====
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-revealElements.forEach(el => revealObserver.observe(el));
-
-// ===== Counter animation =====
-const counters = document.querySelectorAll('.counter');
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counter = entry.target;
-      const target = +counter.dataset.target;
-      const duration = 1500;
-      const start = performance.now();
-      function update(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        counter.textContent = Math.round(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-      counterObserver.unobserve(counter);
-    }
-  });
-}, { threshold: 0.5 });
-counters.forEach(c => counterObserver.observe(c));
-
-// ===================================================
-// ===== POSTHOG CUSTOM EVENT TRACKING =====
-// ===================================================
-
-// --- Track all CTA button clicks ---
-document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
-  btn.addEventListener('click', () => {
-    posthog.capture('cta_clicked', {
-      button_text: btn.textContent.trim(),
-      button_type: btn.classList.contains('btn-primary') ? 'primary' : 
-                   btn.classList.contains('nav-cta') ? 'nav_cta' : 'outline',
-      section: btn.closest('section')?.className?.split(' ')[0] || 
-               btn.closest('nav') ? 'navbar' : 'unknown',
-      page_url: window.location.href
-    });
-  });
-});
-
-// --- Track OSMOSphere tab switches ---
-document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    posthog.capture('osmosphere_tab_viewed', {
-      tab_name: btn.textContent.trim(),
-      tab_index: i
-    });
-  });
-});
-
-// --- Track testimonial slide views ---
-const originalGoToSlide = goToSlide;
-goToSlide = function(index) {
-  originalGoToSlide(index);
-  const authorEl = slides[index]?.querySelector('.testimonial-name');
-  posthog.capture('testimonial_viewed', {
-    slide_index: index,
-    author: authorEl ? authorEl.textContent.trim() : 'unknown',
-    trigger: 'manual_or_auto'
-  });
-};
-
-// --- Track navbar link clicks ---
-document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(link => {
-  link.addEventListener('click', () => {
-    posthog.capture('nav_link_clicked', {
-      link_text: link.textContent.trim(),
-      link_href: link.getAttribute('href')
-    });
-  });
-});
-
-// --- Track industry card clicks ---
-document.querySelectorAll('.industry-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const title = card.querySelector('h4')?.textContent.replace(/\n/g, ' ').trim();
-    posthog.capture('industry_card_clicked', {
-      industry: title || 'unknown'
-    });
-  });
-});
-
-// --- Track app chip clicks in OSMOSphere ---
-document.querySelectorAll('.app-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    posthog.capture('app_chip_clicked', {
-      app_name: chip.textContent.trim()
-    });
-  });
-});
-
-// --- Track integration pill clicks ---
-document.querySelectorAll('.integration-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    posthog.capture('integration_clicked', {
-      integration_name: pill.textContent.trim()
-    });
-  });
-});
-
-// --- Track footer link clicks ---
-document.querySelectorAll('.footer a').forEach(link => {
-  link.addEventListener('click', () => {
-    posthog.capture('footer_link_clicked', {
-      link_text: link.textContent.trim(),
-      link_href: link.getAttribute('href'),
-      column: link.closest('.footer-col')?.querySelector('h5')?.textContent.trim() || 'brand'
-    });
-  });
-});
-
-// --- Track announcement bar click ---
-const announcementLink = document.querySelector('.announcement-bar a');
-if (announcementLink) {
-  announcementLink.addEventListener('click', () => {
-    posthog.capture('announcement_bar_clicked', {
-      text: announcementLink.textContent.trim()
-    });
-  });
-}
-
-// --- Track max scroll depth on page leave ---
-let maxScrollDepth = 0;
-window.addEventListener('scroll', () => {
-  const scrollPercent = Math.round(
-    (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-  );
-  if (scrollPercent > maxScrollDepth) maxScrollDepth = scrollPercent;
-});
-window.addEventListener('beforeunload', () => {
-  posthog.capture('page_scroll_depth', {
-    max_percent: maxScrollDepth,
-    page_url: window.location.href
-  });
-});
-
-// --- Track section visibility (which sections users actually see) ---
-document.querySelectorAll('section, .logo-ticker').forEach(section => {
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        posthog.capture('section_viewed', {
-          section_id: entry.target.id || 'none',
-          section_class: entry.target.className.split(' ')[0] || 'unknown'
-        });
-        sectionObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  sectionObserver.observe(section);
-});
-
-// --- Track time on page ---
-const pageLoadTime = Date.now();
-window.addEventListener('beforeunload', () => {
-  const timeOnPage = Math.round((Date.now() - pageLoadTime) / 1000);
-  posthog.capture('time_on_page', {
-    seconds: timeOnPage,
-    page_url: window.location.href
-  });
-});
-
-// --- Track mobile menu open/close ---
-const hamburgerEl = document.getElementById('hamburger');
-if (hamburgerEl) {
-  hamburgerEl.addEventListener('click', () => {
-    const isOpening = !document.getElementById('navLinks').classList.contains('open');
-    posthog.capture('mobile_menu_toggled', {
-      action: isOpening ? 'opened' : 'closed'
-    });
-  });
-}
-
-console.log('✅ PostHog initialized with custom event tracking');
+// Scroll depth
+let maxS=0;const loadT=Date.now();
+window.addEventListener('scroll',()=>{const p=Math.round(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100);if(p>maxS)maxS=p});
+window.addEventListener('beforeunload',()=>{posthog.capture('page_scroll_depth',{max_percent:maxS});posthog.capture('time_on_page',{seconds:Math.round((Date.now()-loadT)/1000)})});
 </script>
 </body>
 </html>
