@@ -7,7 +7,7 @@
 <!-- POSTHOG -->
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-posthog.init('phc_W7RkRszXES8fawPwyJpOIts906WXVmpTcgKEt0Ys1Ex',{api_host:'https://us.i.posthog.com',defaults:'2026-01-30',autocapture:true,capture_pageview:true,capture_pageleave:true,session_recording:{maskAllInputs:true}});
+posthog.init('phc_W7RkRszXES8fawPwyJpOIts906WXVmpTcgKEt0Ys1Ex',{api_host:'/ingest',ui_host:'https://us.posthog.com',defaults:'2026-01-30',autocapture:true,capture_pageview:true,capture_pageleave:true,session_recording:{maskAllInputs:true}});
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -182,6 +182,59 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ====== LOGIN PAGE ====== */
+.login-screen{min-height:100vh;background:var(--osmos-gradient);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:40px 20px}
+.login-screen::before{content:'';position:absolute;top:50%;left:50%;width:900px;height:900px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.04);pointer-events:none}
+.login-screen::after{content:'';position:absolute;top:50%;left:50%;width:550px;height:550px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.03);pointer-events:none}
+.login-orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.2;pointer-events:none}
+.login-orb--1{width:350px;height:350px;background:#636CFF;top:-80px;right:-60px}
+.login-orb--2{width:250px;height:250px;background:#89F1D9;bottom:-60px;left:-40px}
+
+.login-card{background:var(--osmos-white);border-radius:24px;padding:48px 44px;width:100%;max-width:440px;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative;z-index:1;animation:loginPop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes loginPop{0%{opacity:0;transform:scale(.92) translateY(20px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+.login-card .nav-logo{display:block;text-align:center;margin-bottom:8px;font-size:32px}
+.login-tagline{text-align:center;font-size:14px;color:var(--osmos-ink-2);margin-bottom:36px}
+.login-card .form-group{margin-bottom:20px}
+.login-card .form-group label{font-size:13px;font-weight:700;color:var(--osmos-ink);margin-bottom:6px;display:block}
+.login-card .form-group label .required{color:#C00;margin-left:2px}
+.login-card .form-group input{width:100%;font-family:var(--font-body);font-size:15px;padding:14px 16px;border:1.5px solid var(--osmos-border);border-radius:12px;background:var(--osmos-bg-light);color:var(--osmos-ink);outline:none;transition:border-color .25s,box-shadow .25s,background .25s}
+.login-card .form-group input:focus{border-color:var(--osmos-blue);box-shadow:0 0 0 3px rgba(99,108,255,.12);background:#fff}
+.login-card .form-group input::placeholder{color:var(--osmos-ink-3)}
+.login-card .form-group input.error{border-color:#C00;box-shadow:0 0 0 3px rgba(204,0,0,.08)}
+.login-error{font-size:12px;color:#C00;margin-top:6px;display:none;line-height:1.4}
+.login-error.show{display:block}
+.login-blocked-list{font-size:11px;color:var(--osmos-ink-3);margin-top:12px;text-align:center;line-height:1.6}
+.login-blocked-list strong{color:var(--osmos-ink-2)}
+
+.btn-login{width:100%;padding:16px;border:none;border-radius:12px;background:var(--osmos-blue);color:#fff;font-family:var(--font-display);font-size:16px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;position:relative;overflow:hidden}
+.btn-login:hover:not(:disabled){background:var(--osmos-btn-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,108,255,.35)}
+.btn-login:disabled{opacity:.6;cursor:not-allowed}
+.btn-login .spinner{display:none;width:20px;height:20px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+.btn-login.loading .btn-text{display:none}
+.btn-login.loading .spinner{display:inline-block}
+
+.login-divider{display:flex;align-items:center;gap:16px;margin:28px 0 20px}
+.login-divider::before,.login-divider::after{content:'';flex:1;height:1px;background:var(--osmos-border)}
+.login-divider span{font-size:12px;color:var(--osmos-ink-3);font-weight:600}
+
+.login-benefits{display:flex;flex-direction:column;gap:12px}
+.login-benefit{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--osmos-ink-2)}
+.login-benefit-icon{width:28px;height:28px;min-width:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.login-benefit-icon.b1{background:rgba(99,108,255,.1)}
+.login-benefit-icon.b2{background:rgba(137,241,217,.15)}
+.login-benefit-icon.b3{background:rgba(177,181,255,.2)}
+
+/* Navbar user state */
+.nav-user{display:flex;align-items:center;gap:12px}
+.nav-user-avatar{width:34px;height:34px;border-radius:50%;background:var(--osmos-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-display);font-weight:700;font-size:13px}
+.nav-user-info{display:flex;flex-direction:column}
+.nav-user-email{font-size:12px;color:var(--osmos-ink-2);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-user-domain{font-size:10px;color:var(--osmos-ink-3);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.nav-logout{font-size:12px;color:var(--osmos-blue);font-weight:700;cursor:pointer;margin-left:8px;transition:color .2s}
+.nav-logout:hover{color:#C00}
+.nav-user-section{display:none;align-items:center;gap:8px}
+.nav-user-section.visible{display:flex}
+
 /* ====== DEMO PAGE ====== */
 .demo-hero{background:var(--osmos-gradient);position:relative;overflow:hidden;padding:80px 48px 0;text-align:center}
 .demo-hero::before,.demo-hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
@@ -268,7 +321,7 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
 
 /* Responsive */
 @media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}.tech-stats{grid-template-columns:repeat(3,1fr)}.tab-panel{grid-template-columns:1fr}.industry-grid{grid-template-columns:repeat(2,1fr)}.footer-top{grid-template-columns:1fr 1fr}.demo-content{grid-template-columns:1fr;gap:48px}.proof-bar-inner{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.navbar{padding:0 20px}.nav-links{display:none}.hamburger{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:#fff;justify-content:center;align-items:center;gap:24px;z-index:999}.hero{padding:80px 20px 60px;min-height:80vh}.impact,.osmosphere,.testimonials,.integrations,.industries,.tech,.security,.cta-section{padding:60px 20px}.stats-grid{grid-template-columns:1fr 1fr}.tech-stats{grid-template-columns:repeat(2,1fr)}.cta-cards,.industry-grid{grid-template-columns:1fr}.hero-buttons,.cta-buttons{flex-direction:column;align-items:center}.tabs-nav{flex-wrap:wrap}.tab-panel{padding:32px 24px}.integration-features,.security-features{flex-direction:column;align-items:center}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}.demo-hero{padding:60px 20px 0}.demo-content{padding:40px 20px 60px}.demo-form-wrapper{padding:32px 24px}.form-row{grid-template-columns:1fr}.proof-bar{padding:32px 20px}.faq-section{padding:60px 20px}}
+@media(max-width:768px){.navbar{padding:0 20px}.nav-links{display:none}.hamburger{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:#fff;justify-content:center;align-items:center;gap:24px;z-index:999}.hero{padding:80px 20px 60px;min-height:80vh}.impact,.osmosphere,.testimonials,.integrations,.industries,.tech,.security,.cta-section{padding:60px 20px}.stats-grid{grid-template-columns:1fr 1fr}.tech-stats{grid-template-columns:repeat(2,1fr)}.cta-cards,.industry-grid{grid-template-columns:1fr}.hero-buttons,.cta-buttons{flex-direction:column;align-items:center}.tabs-nav{flex-wrap:wrap}.tab-panel{padding:32px 24px}.integration-features,.security-features{flex-direction:column;align-items:center}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}.demo-hero{padding:60px 20px 0}.demo-content{padding:40px 20px 60px}.demo-form-wrapper{padding:32px 24px}.form-row{grid-template-columns:1fr}.proof-bar{padding:32px 20px}.faq-section{padding:60px 20px}.login-card{padding:36px 28px}.nav-user-info{display:none}.nav-user-section.visible{display:flex}}
 </style>
 </head>
 <body>
@@ -283,13 +336,65 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
     <a onclick="navigateTo('home','tech')">Technology</a>
     <a onclick="navigateTo('home','testimonials')">Success Stories</a>
     <a onclick="navigateTo('home')">About Us</a>
+    <div class="nav-user-section" id="navUserSection">
+      <div class="nav-user">
+        <div class="nav-user-avatar" id="navAvatar">--</div>
+        <div class="nav-user-info">
+          <div class="nav-user-email" id="navEmail">--</div>
+          <div class="nav-user-domain" id="navDomain">--</div>
+        </div>
+      </div>
+      <span class="nav-logout" onclick="handleLogout()">Logout</span>
+    </div>
     <a class="nav-cta" onclick="navigateTo('demo')">Get a Demo</a>
   </div>
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
+<!-- ==================== PAGE: LOGIN ==================== -->
+<div class="page active" id="page-login">
+<div class="login-screen">
+  <div class="login-orb login-orb--1"></div>
+  <div class="login-orb login-orb--2"></div>
+  <div class="login-card">
+    <div class="nav-logo">osmos</div>
+    <p class="login-tagline">Sign in with your work email to explore the platform</p>
+
+    <div class="form-group">
+      <label>Work email <span class="required">*</span></label>
+      <input type="email" id="loginEmail" placeholder="you@company.com" onkeydown="if(event.key==='Enter')handleLogin()">
+      <div class="login-error" id="loginError"></div>
+    </div>
+
+    <div class="form-group">
+      <label>Full name <span class="required">*</span></label>
+      <input type="text" id="loginName" placeholder="Jane Smith" onkeydown="if(event.key==='Enter')handleLogin()">
+      <div class="login-error" id="loginNameError"></div>
+    </div>
+
+    <button class="btn-login" id="loginBtn" onclick="handleLogin()">
+      <span class="btn-text">Continue with work email</span>
+      <span class="spinner"></span>
+    </button>
+
+    <div class="login-blocked-list">
+      <strong>Personal emails are not accepted.</strong><br>
+      Gmail, Yahoo, Hotmail, Outlook, AOL, iCloud, ProtonMail, Yandex, Mail.com, Zoho Mail, GMX and other free providers are blocked.
+    </div>
+
+    <div class="login-divider"><span>Why sign in?</span></div>
+
+    <div class="login-benefits">
+      <div class="login-benefit"><div class="login-benefit-icon b1">📊</div>Personalised platform experience based on your industry</div>
+      <div class="login-benefit"><div class="login-benefit-icon b2">🎯</div>Custom revenue projections for your company</div>
+      <div class="login-benefit"><div class="login-benefit-icon b3">⚡</div>Priority access to schedule demos with our experts</div>
+    </div>
+  </div>
+</div>
+</div>
+
 <!-- ==================== PAGE: HOME ==================== -->
-<div class="page active" id="page-home">
+<div class="page" id="page-home">
 <section class="hero"><div class="hero-orb hero-orb--1"></div><div class="hero-orb hero-orb--2"></div><h1><span>3X</span> Your Ad<br>Monetisation</h1><p>Most RMNs stall at 0.5% GMV, an average Osmos customer does 3x. Ad tech experts from Amazon built the best-in-class retail media tech.</p><div class="hero-buttons"><button class="btn-primary" onclick="navigateTo('demo')">Schedule a Demo</button><button class="btn-outline" onclick="navigateTo('home','osmosphere')">Explore Platform</button></div></section>
 
 <div class="logo-ticker"><div class="ticker-track"><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span></div></div>
@@ -355,70 +460,383 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
 
 <!-- ==================== JAVASCRIPT ==================== -->
 <script>
-// Page Router
-function navigateTo(page, scrollTo){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+page).classList.add('active');
-  window.scrollTo(0,0);
-  document.getElementById('navLinks').classList.remove('open');
-  if(scrollTo) setTimeout(()=>{const el=document.getElementById(scrollTo);if(el)el.scrollIntoView({behavior:'smooth'})},100);
-  document.getElementById('announcementBar').style.display=page==='home'?'block':'none';
-  document.title=page==='demo'?'Get a Demo — Osmos':'Osmos — Retail Media Tech';
-  posthog.capture('$pageview',{page,section:scrollTo||null});
-  setTimeout(initReveals,150);
+// ===== BLOCKED EMAIL DOMAINS (comprehensive list) =====
+const BLOCKED_DOMAINS = [
+  'gmail.com','googlemail.com','yahoo.com','yahoo.co.in','yahoo.co.uk','yahoo.fr','yahoo.de','yahoo.it','yahoo.es','yahoo.ca','yahoo.com.br','yahoo.co.jp',
+  'hotmail.com','hotmail.co.uk','hotmail.fr','hotmail.de','hotmail.it','hotmail.es',
+  'outlook.com','outlook.co.uk','outlook.fr','outlook.de','live.com','live.co.uk','live.fr',
+  'msn.com','aol.com','aol.co.uk','icloud.com','me.com','mac.com',
+  'protonmail.com','proton.me','protonmail.ch','pm.me',
+  'mail.com','email.com','usa.com','myself.com','consultant.com','europe.com','asia.com',
+  'yandex.com','yandex.ru','yandex.ua','ya.ru',
+  'zoho.com','zohomail.com',
+  'gmx.com','gmx.de','gmx.net','gmx.at','gmx.ch',
+  'web.de','t-online.de','freenet.de','arcor.de',
+  'mail.ru','inbox.ru','list.ru','bk.ru',
+  'rediffmail.com','rediff.com',
+  'qq.com','163.com','126.com','sina.com','sina.cn','yeah.net','foxmail.com',
+  'naver.com','daum.net','hanmail.net',
+  'tutanota.com','tuta.com','tuta.io',
+  'fastmail.com','fastmail.fm',
+  'hushmail.com','guerrillamail.com','guerrillamailblock.com','sharklasers.com','guerrillamail.info','grr.la','guerrillamail.biz','guerrillamail.de','guerrillamail.net','guerrillamail.org',
+  'mailinator.com','guerrillamail.com','tempmail.com','throwaway.email','temp-mail.org',
+  'dispostable.com','yopmail.com','getnada.com','maildrop.cc','mailnesia.com',
+  'cock.li','airmail.cc','8chan.co',
+  'rocketmail.com','sky.com','btinternet.com','virginmedia.com',
+  'att.net','sbcglobal.net','bellsouth.net','charter.net','cox.net','earthlink.net','juno.com',
+  'comcast.net','verizon.net','optonline.net','frontier.com',
+  'laposte.net','orange.fr','wanadoo.fr','free.fr','sfr.fr','neuf.fr',
+  'libero.it','virgilio.it','alice.it','tin.it','tiscali.it','fastwebnet.it',
+  'rambler.ru','ukr.net','i.ua','bigmir.net',
+  'abv.bg','dir.bg','mail.bg',
+  'centrum.cz','seznam.cz','volny.cz',
+  'wp.pl','o2.pl','interia.pl','onet.pl','poczta.fm',
+  'terra.com.br','uol.com.br','bol.com.br','ig.com.br','r7.com',
+  'mail.de','posteo.de','mailbox.org'
+];
+
+// ===== SESSION MANAGEMENT =====
+function getSession() {
+  try { return JSON.parse(sessionStorage.getItem('osmos_session')); } catch { return null; }
+}
+function setSession(data) {
+  sessionStorage.setItem('osmos_session', JSON.stringify(data));
+}
+function clearSession() {
+  sessionStorage.removeItem('osmos_session');
 }
 
+// ===== LOGIN VALIDATION =====
+function isWorkEmail(email) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { valid: false, reason: 'invalid' };
+  const domain = email.split('@')[1].toLowerCase();
+  if (BLOCKED_DOMAINS.includes(domain)) return { valid: false, reason: 'personal', domain };
+  // Block numeric-only domains and very short domains
+  const domainName = domain.split('.')[0];
+  if (domainName.length < 2) return { valid: false, reason: 'suspicious' };
+  return { valid: true, domain };
+}
+
+function getDomainDisplay(email) {
+  const domain = email.split('@')[1].toLowerCase();
+  const parts = domain.split('.');
+  return parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+}
+
+function getInitials(name) {
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
+
+// ===== HANDLE LOGIN =====
+function handleLogin() {
+  const emailInput = document.getElementById('loginEmail');
+  const nameInput = document.getElementById('loginName');
+  const emailErr = document.getElementById('loginError');
+  const nameErr = document.getElementById('loginNameError');
+  const email = emailInput.value.trim().toLowerCase();
+  const name = nameInput.value.trim();
+
+  // Reset errors
+  emailInput.classList.remove('error');
+  nameInput.classList.remove('error');
+  emailErr.classList.remove('show');
+  nameErr.classList.remove('show');
+
+  let hasError = false;
+
+  // Validate name
+  if (!name || name.length < 2) {
+    nameInput.classList.add('error');
+    nameErr.textContent = 'Please enter your full name';
+    nameErr.classList.add('show');
+    hasError = true;
+  }
+
+  // Validate email
+  const check = isWorkEmail(email);
+  if (!check.valid) {
+    emailInput.classList.add('error');
+    if (check.reason === 'invalid') {
+      emailErr.textContent = 'Please enter a valid email address';
+    } else if (check.reason === 'personal') {
+      emailErr.textContent = `${check.domain} is a personal email provider. Please use your work email (e.g., you@yourcompany.com)`;
+    } else {
+      emailErr.textContent = 'This doesn\'t look like a valid work email';
+    }
+    emailErr.classList.add('show');
+
+    posthog.capture('login_failed', {
+      reason: check.reason,
+      blocked_domain: check.domain || null,
+      attempted_email_domain: email.includes('@') ? email.split('@')[1] : null
+    });
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  // Show loading
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const domain = email.split('@')[1].toLowerCase();
+  const companyName = getDomainDisplay(email);
+
+  // Save session
+  const sessionData = { email, name, domain, companyName, loginTime: Date.now() };
+  setSession(sessionData);
+
+  // ===== POSTHOG: INDIVIDUAL TRACKING =====
+  posthog.identify(email, {
+    email: email,
+    name: name,
+    company_domain: domain,
+    company_name: companyName,
+    login_method: 'work_email',
+    first_seen: new Date().toISOString()
+  });
+
+  // ===== POSTHOG: DOMAIN-WISE / COMPANY GROUP TRACKING =====
+  posthog.group('company', domain, {
+    name: companyName,
+    domain: domain,
+    first_user_login: new Date().toISOString()
+  });
+
+  // Capture login event (tagged with both individual + group)
+  posthog.capture('user_logged_in', {
+    email: email,
+    name: name,
+    company_domain: domain,
+    company_name: companyName
+  });
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    applyLoggedInState(sessionData);
+    navigateTo('home');
+  }, 1200);
+}
+
+// ===== APPLY LOGGED-IN UI STATE =====
+function applyLoggedInState(session) {
+  document.getElementById('navAvatar').textContent = getInitials(session.name);
+  document.getElementById('navEmail').textContent = session.email;
+  document.getElementById('navDomain').textContent = session.companyName;
+  document.getElementById('navUserSection').classList.add('visible');
+}
+
+// ===== HANDLE LOGOUT =====
+function handleLogout() {
+  const session = getSession();
+  if (session) {
+    posthog.capture('user_logged_out', {
+      email: session.email,
+      company_domain: session.domain,
+      session_duration_seconds: Math.round((Date.now() - session.loginTime) / 1000)
+    });
+  }
+  posthog.reset();
+  clearSession();
+  document.getElementById('navUserSection').classList.remove('visible');
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginName').value = '';
+  navigateTo('login');
+}
+
+// ===== PAGE ROUTER (with login gate) =====
+function navigateTo(page, scrollTo) {
+  // Gate: if not logged in and not going to login, redirect to login
+  const session = getSession();
+  if (!session && page !== 'login') {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-login').classList.add('active');
+    document.getElementById('navbar').style.display = 'none';
+    document.getElementById('announcementBar').style.display = 'none';
+    return;
+  }
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+  document.getElementById('navLinks').classList.remove('open');
+
+  // Show/hide navbar and announcement
+  if (page === 'login') {
+    document.getElementById('navbar').style.display = 'none';
+    document.getElementById('announcementBar').style.display = 'none';
+  } else {
+    document.getElementById('navbar').style.display = 'flex';
+    document.getElementById('announcementBar').style.display = page === 'home' ? 'block' : 'none';
+  }
+
+  if (scrollTo) setTimeout(() => { const el = document.getElementById(scrollTo); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100);
+
+  document.title = page === 'demo' ? 'Get a Demo — Osmos' : page === 'login' ? 'Sign In — Osmos' : 'Osmos — Retail Media Tech';
+
+  // PostHog: track page navigation (with group context if logged in)
+  if (session) {
+    posthog.capture('$pageview', {
+      page: page,
+      section: scrollTo || null,
+      company_domain: session.domain,
+      company_name: session.companyName
+    });
+  }
+
+  setTimeout(initReveals, 150);
+}
+
+// ===== CHECK SESSION ON LOAD =====
+(function checkSession() {
+  const session = getSession();
+  if (session) {
+    // Re-identify on page reload
+    posthog.identify(session.email, {
+      email: session.email,
+      name: session.name,
+      company_domain: session.domain,
+      company_name: session.companyName
+    });
+    posthog.group('company', session.domain, {
+      name: session.companyName,
+      domain: session.domain
+    });
+    applyLoggedInState(session);
+    // Show home instead of login
+    document.getElementById('page-login').classList.remove('active');
+    document.getElementById('page-home').classList.add('active');
+    document.getElementById('navbar').style.display = 'flex';
+    document.getElementById('announcementBar').style.display = 'block';
+  } else {
+    // Show login, hide navbar
+    document.getElementById('navbar').style.display = 'none';
+    document.getElementById('announcementBar').style.display = 'none';
+  }
+})();
+
 // Navbar
-window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20));
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 
 // Tabs
-function switchTab(i){document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',j===i));document.querySelectorAll('.tab-content').forEach((t,j)=>t.classList.toggle('active',j===i));posthog.capture('osmosphere_tab_viewed',{tab_name:['Adscape','ControlHub','StratEdge'][i]})}
+function switchTab(i) {
+  document.querySelectorAll('.tab-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.querySelectorAll('.tab-content').forEach((t, j) => t.classList.toggle('active', j === i));
+  posthog.capture('osmosphere_tab_viewed', { tab_name: ['Adscape', 'ControlHub', 'StratEdge'][i] });
+}
 
 // Slider
-let cur=0;const slides=document.querySelectorAll('.testimonial-card'),dots=document.querySelectorAll('.slider-dot');
-function goToSlide(i){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=i;slides[cur].classList.add('active');dots[cur].classList.add('active')}
-setInterval(()=>goToSlide((cur+1)%slides.length),5000);
+let cur = 0; const slides = document.querySelectorAll('.testimonial-card'), dots = document.querySelectorAll('.slider-dot');
+function goToSlide(i) { slides[cur].classList.remove('active'); dots[cur].classList.remove('active'); cur = i; slides[cur].classList.add('active'); dots[cur].classList.add('active'); }
+setInterval(() => goToSlide((cur + 1) % slides.length), 5000);
 
 // Reveal
-function initReveals(){const els=document.querySelectorAll('.page.active .reveal:not(.visible)');const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.15});els.forEach(el=>obs.observe(el))}
+function initReveals() {
+  const els = document.querySelectorAll('.page.active .reveal:not(.visible)');
+  const obs = new IntersectionObserver(e => {
+    e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+  }, { threshold: .15 });
+  els.forEach(el => obs.observe(el));
+}
 initReveals();
 
 // Counters
-document.querySelectorAll('.counter').forEach(c=>{new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const t=+c.dataset.target,s=performance.now();(function u(n){const p=Math.min((n-s)/1500,1);c.textContent=Math.round((1-Math.pow(1-p,3))*t);if(p<1)requestAnimationFrame(u)})(s);en.target._obs&&en.target._obs.unobserve(en.target)}})},{threshold:.5}).observe(c)});
+document.querySelectorAll('.counter').forEach(c => {
+  new IntersectionObserver(e => {
+    e.forEach(en => {
+      if (en.isIntersecting) {
+        const t = +c.dataset.target, s = performance.now();
+        (function u(n) { const p = Math.min((n - s) / 1500, 1); c.textContent = Math.round((1 - Math.pow(1 - p, 3)) * t); if (p < 1) requestAnimationFrame(u); })(s);
+      }
+    });
+  }, { threshold: .5 }).observe(c);
+});
 
 // FAQ
-function toggleFaq(el){const item=el.closest('.faq-item'),open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open){item.classList.add('open');posthog.capture('faq_opened',{question:el.querySelector('h4').textContent.trim()})}}
-
-// Form
-function validateEmail(e){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return false;const free=['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com'];return!free.includes(e.split('@')[1]?.toLowerCase())}
-function clearErrors(){document.querySelectorAll('.error-msg').forEach(e=>e.classList.remove('show'));document.querySelectorAll('#page-demo input,#page-demo select').forEach(e=>e.classList.remove('error'))}
-function showError(f,m){document.getElementById(f).classList.add('error');document.getElementById(m).classList.add('show')}
-function handleSubmit(){
-  clearErrors();let ok=true;
-  const v=id=>document.getElementById(id).value.trim();
-  const fn=v('firstName'),ln=v('lastName'),em=v('workEmail'),co=v('companyName'),ind=document.getElementById('industry').value;
-  if(!fn){showError('firstName','firstNameError');ok=false}
-  if(!ln){showError('lastName','lastNameError');ok=false}
-  if(!validateEmail(em)){document.getElementById('workEmailError').textContent=em?'Please use your work email':'Please enter your work email';showError('workEmail','workEmailError');ok=false}
-  if(!co){showError('companyName','companyNameError');ok=false}
-  if(!ind){showError('industry','industryError');ok=false}
-  if(!ok){posthog.capture('demo_form_validation_failed');return}
-  const btn=document.getElementById('submitBtn');btn.classList.add('loading');btn.disabled=true;
-  const data={first_name:fn,last_name:ln,email:em,company:co,job_title:v('jobTitle'),industry:ind,gmv:document.getElementById('gmv').value,message:v('message')};
-  posthog.capture('demo_form_submitted',data);
-  posthog.identify(em,{...data,source:'demo_form'});
-  setTimeout(()=>{btn.classList.remove('loading');document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';posthog.capture('demo_form_success',{company:co,industry:ind})},1800);
+function toggleFaq(el) {
+  const item = el.closest('.faq-item'), open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) { item.classList.add('open'); posthog.capture('faq_opened', { question: el.querySelector('h4').textContent.trim() }); }
 }
 
-// Form start tracking
-let formStarted=false;
-document.querySelectorAll('#page-demo input,#page-demo select,#page-demo textarea').forEach(el=>{el.addEventListener('focus',()=>{if(!formStarted){formStarted=true;posthog.capture('demo_form_started')}})});
+// Demo Form
+function validateEmail(e) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) return false;
+  return !BLOCKED_DOMAINS.includes(e.split('@')[1]?.toLowerCase());
+}
+function clearErrors() {
+  document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('#page-demo input,#page-demo select').forEach(e => e.classList.remove('error'));
+}
+function showError(f, m) { document.getElementById(f).classList.add('error'); document.getElementById(m).classList.add('show'); }
 
-// Scroll depth
-let maxS=0;const loadT=Date.now();
-window.addEventListener('scroll',()=>{const p=Math.round(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100);if(p>maxS)maxS=p});
-window.addEventListener('beforeunload',()=>{posthog.capture('page_scroll_depth',{max_percent:maxS});posthog.capture('time_on_page',{seconds:Math.round((Date.now()-loadT)/1000)})});
+function handleSubmit() {
+  clearErrors(); let ok = true;
+  const v = id => document.getElementById(id).value.trim();
+  const fn = v('firstName'), ln = v('lastName'), em = v('workEmail'), co = v('companyName'), ind = document.getElementById('industry').value;
+  if (!fn) { showError('firstName', 'firstNameError'); ok = false; }
+  if (!ln) { showError('lastName', 'lastNameError'); ok = false; }
+  if (!validateEmail(em)) { document.getElementById('workEmailError').textContent = em ? 'Please use your work email' : 'Please enter your work email'; showError('workEmail', 'workEmailError'); ok = false; }
+  if (!co) { showError('companyName', 'companyNameError'); ok = false; }
+  if (!ind) { showError('industry', 'industryError'); ok = false; }
+  if (!ok) { posthog.capture('demo_form_validation_failed'); return; }
+
+  const btn = document.getElementById('submitBtn'); btn.classList.add('loading'); btn.disabled = true;
+  const domain = em.split('@')[1].toLowerCase();
+  const data = { first_name: fn, last_name: ln, email: em, company: co, job_title: v('jobTitle'), industry: ind, gmv: document.getElementById('gmv').value, message: v('message'), company_domain: domain };
+
+  posthog.capture('demo_form_submitted', data);
+  posthog.identify(em, { ...data, source: 'demo_form' });
+  posthog.group('company', domain, { name: co, domain: domain, industry: ind, gmv_range: data.gmv });
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    posthog.capture('demo_form_success', { company: co, industry: ind, company_domain: domain });
+  }, 1800);
+}
+
+// Pre-fill demo form with login data
+function prefillDemoForm() {
+  const session = getSession();
+  if (session) {
+    const nameParts = session.name.split(' ');
+    const firstNameEl = document.getElementById('firstName');
+    const lastNameEl = document.getElementById('lastName');
+    const emailEl = document.getElementById('workEmail');
+    if (firstNameEl && !firstNameEl.value) firstNameEl.value = nameParts[0] || '';
+    if (lastNameEl && !lastNameEl.value) lastNameEl.value = nameParts.slice(1).join(' ') || '';
+    if (emailEl && !emailEl.value) emailEl.value = session.email || '';
+  }
+}
+
+// Override navigateTo for demo page to prefill
+const _origNavigateTo = navigateTo;
+navigateTo = function(page, scrollTo) {
+  _origNavigateTo(page, scrollTo);
+  if (page === 'demo') setTimeout(prefillDemoForm, 200);
+};
+
+// Form start tracking
+let formStarted = false;
+document.querySelectorAll('#page-demo input,#page-demo select,#page-demo textarea').forEach(el => {
+  el.addEventListener('focus', () => { if (!formStarted) { formStarted = true; posthog.capture('demo_form_started'); } });
+});
+
+// Scroll depth & time on page
+let maxS = 0; const loadT = Date.now();
+window.addEventListener('scroll', () => { const p = Math.round(window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100); if (p > maxS) maxS = p; });
+window.addEventListener('beforeunload', () => {
+  const session = getSession();
+  posthog.capture('page_scroll_depth', { max_percent: maxS, company_domain: session?.domain });
+  posthog.capture('time_on_page', { seconds: Math.round((Date.now() - loadT) / 1000), company_domain: session?.domain });
+});
+
+console.log('✅ Osmos loaded — Login gate + PostHog dual tracking (individual + domain group) active');
 </script>
 </body>
 </html>
