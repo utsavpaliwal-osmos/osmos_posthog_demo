@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Osmos — Omnichannel Retail Media Tech</title>
+<title>About Us — Osmos</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
@@ -115,34 +115,37 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
 }
 
 
-.hero{background:var(--osmos-gradient);position:relative;overflow:hidden;padding:100px 48px 80px;text-align:center;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.hero::before,.hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.05);pointer-events:none}
-.hero::before{width:900px;height:900px}.hero::after{width:600px;height:600px;border-color:rgba(255,255,255,.04)}
-.hero h1{font-family:var(--font-display);font-size:clamp(40px,6vw,72px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:24px;position:relative;z-index:1}
-.hero h1 span{color:var(--osmos-mint)}
-.hero p{color:rgba(255,255,255,.8);font-size:clamp(16px,2vw,20px);max-width:600px;margin:0 auto 40px;position:relative;z-index:1}
-.hero-buttons{display:flex;gap:16px;justify-content:center;position:relative;z-index:1}
-.logo-ticker{padding:40px 0;background:var(--osmos-white);overflow:hidden;border-bottom:1px solid var(--osmos-border)}
-.ticker-track{display:flex;gap:64px;animation:ticker 30s linear infinite;width:max-content}
-.ticker-track span{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--osmos-ink-3);white-space:nowrap;opacity:.5}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.impact{padding:100px 48px;background:var(--osmos-bg-light);text-align:center}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1100px;margin:0 auto}
-.stat-card{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:14px;padding:40px 24px;transition:transform .3s,border-color .3s}
-.stat-card:hover{transform:translateY(-6px);border-color:var(--osmos-blue)}
-.stat-number{font-family:var(--font-body);font-weight:300;font-size:56px;color:var(--osmos-blue);line-height:1;margin-bottom:8px}
-.stat-label{font-size:14px;color:var(--osmos-ink-2)}
-.cta-section{padding:100px 48px;background:var(--osmos-gradient);text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.05)}
-.cta-section h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;margin-bottom:16px;position:relative;z-index:1}
-.cta-section>p{color:rgba(255,255,255,.7);font-size:18px;margin-bottom:40px;position:relative;z-index:1}
-.cta-buttons{display:flex;gap:16px;justify-content:center;position:relative;z-index:1}
-@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.hero{padding:80px 20px 60px;min-height:80vh}.impact,.cta-section{padding:60px 20px}.hero-buttons,.cta-buttons{flex-direction:column;align-items:center}}
+.about-hero{background:var(--osmos-gradient);padding:80px 48px 60px;text-align:center;position:relative;overflow:hidden}
+.about-hero h1{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.about-hero p{color:rgba(255,255,255,.75);font-size:18px;max-width:600px;margin:0 auto;position:relative;z-index:1}
+.about-section{padding:80px 48px;max-width:1000px;margin:0 auto}
+.about-section h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--osmos-navy);margin-bottom:24px}
+.about-section p{font-size:16px;color:var(--osmos-ink-2);line-height:1.8;margin-bottom:16px}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.value-item{background:var(--osmos-bg-light);border-radius:16px;padding:32px 24px;text-align:center}
+.value-item .icon{font-size:32px;margin-bottom:12px}
+.value-item h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--osmos-navy);margin-bottom:8px}
+.value-item p{font-size:13px;color:var(--osmos-ink-2);margin-bottom:0}
+.team-section{padding:80px 48px;background:var(--osmos-bg-light)}
+.team-section h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--osmos-navy);text-align:center;margin-bottom:48px}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.team-card{background:var(--osmos-white);border:1px solid var(--osmos-border);border-radius:16px;padding:32px 20px;text-align:center;transition:transform .3s}
+.team-card:hover{transform:translateY(-4px)}
+.team-avatar{width:64px;height:64px;border-radius:50%;background:var(--osmos-lavender);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--osmos-navy)}
+.team-card h4{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--osmos-navy)}
+.team-card p{font-size:13px;color:var(--osmos-ink-2)}
+.compliance-section{padding:80px 48px;text-align:center}
+.compliance-section h2{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--osmos-navy);margin-bottom:40px}
+.comp-badges{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.comp-badge{width:100px;height:100px;border-radius:16px;background:var(--osmos-bg-light);border:1px solid var(--osmos-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--osmos-navy);text-align:center;padding:8px}
+.about-cta{padding:80px 48px;background:var(--osmos-gradient);text-align:center}
+.about-cta h2{font-family:var(--font-display);font-size:28px;font-weight:700;color:#fff;margin-bottom:16px}
+.about-cta p{color:rgba(255,255,255,.7);margin-bottom:32px;font-size:16px}
+@media(max-width:768px){.about-hero,.about-section,.team-section,.compliance-section,.about-cta{padding:60px 20px}.values-grid,.team-grid{grid-template-columns:1fr 1fr}}
 
 </style>
 </head>
-<body data-page="home">
+<body data-page="about">
 
 <div class="login-overlay" id="loginOverlay">
   <div class="login-card">
@@ -178,9 +181,9 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
 <nav class="navbar" id="navbar">
   <a href="/" class="nav-logo">osmos</a>
   <div class="nav-links" id="navLinks">
-    <a href="/" class="active-link">Home</a>
+    <a href="/">Home</a>
     <a href="/solutions.html">Solutions</a>
-    <a href="/about.html">About Us</a>
+    <a href="/about.html" class="active-link">About Us</a>
     <div class="nav-user-section" id="navUserSection">
       <div class="nav-user">
         <div class="nav-user-avatar" id="navAvatar">--</div>
@@ -196,29 +199,48 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-st
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
 </nav>
 
-<section class="hero"><div class="hero-orb hero-orb--1"></div><div class="hero-orb hero-orb--2"></div>
-<h1><span>3X</span> Your Ad<br>Monetisation</h1>
-<p>Most RMNs stall at 0.5% GMV, an average Osmos customer does 3x. Ad tech experts from Amazon built the best-in-class retail media tech.</p>
-<div class="hero-buttons"><a href="/get-a-demo.html" class="btn-primary">Schedule a Demo</a><a href="/solutions.html" class="btn-outline">Explore Solutions</a></div>
+<section class="about-hero"><div class="hero-orb hero-orb--1"></div><div class="hero-orb hero-orb--2"></div>
+<div class="section-eyebrow" style="color:var(--osmos-mint);position:relative;z-index:1">About osmos</div>
+<h1>Built by ad tech veterans,<br>for retailers</h1>
+<p>Our team comes from Amazon, Google, and leading adtech companies. We've built the retail media OS from the ground up.</p>
 </section>
 
-<div class="logo-ticker"><div class="ticker-track"><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span><span>Purplle</span><span>Apollo 24|7</span><span>TrueMeds</span><span>Rapido</span><span>Spencer's</span><span>TATA 1mg</span><span>BigBasket</span><span>Swiggy</span><span>Zepto</span><span>Blinkit</span><span>JioMart</span><span>Nykaa</span></div></div>
-
-<section class="impact" id="impact">
-<div class="section-eyebrow reveal">The Osmos Impact</div>
-<h2 class="section-title reveal">Increased Revenue. Reduced Cost.</h2>
-<div class="stats-grid">
-<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="3">0</span>x</div><div class="stat-label">Increase in Ad Revenues</div></div>
-<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="70">0</span>%</div><div class="stat-label">Increase in Advertiser Adoption</div></div>
-<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="8">0</span>x</div><div class="stat-label">Return on Ad Spends</div></div>
-<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="10">0</span>%</div><div class="stat-label">Of the Cost of Building In-House</div></div>
+<section class="about-section">
+<h2 class="reveal">Our mission</h2>
+<p class="reveal">Osmos exists to democratise retail media technology. Every retailer — regardless of size — deserves access to the same ad monetisation tools that power Amazon's $50B+ advertising business.</p>
+<p class="reveal">We believe retail media should be a profit centre, not a cost centre. Our platform helps retailers go from 0.5% GMV to 1.5%+ within months.</p>
+<div class="values-grid">
+<div class="value-item reveal"><div class="icon">🚀</div><h4>Speed to market</h4><p>Go live in 4 weeks, not 4 months. Turnkey or API — your choice.</p></div>
+<div class="value-item reveal"><div class="icon">🎯</div><h4>Retailer-first</h4><p>Every feature is designed around your GMV, your brands, your shoppers.</p></div>
+<div class="value-item reveal"><div class="icon">🔒</div><h4>Privacy by design</h4><p>Cookie-less, walled garden, SOC 2 Type II, GDPR, CCPA compliant.</p></div>
 </div>
 </section>
 
-<section class="cta-section">
-<h2 class="reveal">Your dream retail media platform live in 4 weeks</h2>
-<p class="reveal">Get started with Osmos — the fastest path to retail media monetisation.</p>
-<div class="cta-buttons reveal"><a href="/get-a-demo.html" class="btn-primary">Talk to Our Experts</a><a href="/solutions.html" class="btn-outline">Explore Solutions</a></div>
+<section class="team-section">
+<h2 class="reveal">Leadership team</h2>
+<div class="team-grid">
+<div class="team-card reveal"><div class="team-avatar">AK</div><h4>Amit Kumar</h4><p>Co-founder & CEO</p></div>
+<div class="team-card reveal"><div class="team-avatar">RS</div><h4>Raghav Sharma</h4><p>Co-founder & CTO</p></div>
+<div class="team-card reveal"><div class="team-avatar">PD</div><h4>Priya Desai</h4><p>VP Product</p></div>
+<div class="team-card reveal"><div class="team-avatar">VN</div><h4>Vikram Nair</h4><p>VP Engineering</p></div>
+</div>
+</section>
+
+<section class="compliance-section">
+<h2 class="reveal">Our compliance</h2>
+<div class="comp-badges reveal">
+<div class="comp-badge">GDPR<br>Compliant</div>
+<div class="comp-badge">ISO<br>27001</div>
+<div class="comp-badge">DPDPA<br>Compliant</div>
+<div class="comp-badge">SOC 2<br>Type II</div>
+<div class="comp-badge">CCPA<br>Compliant</div>
+</div>
+</section>
+
+<section class="about-cta">
+<h2 class="reveal">Want to join our team?</h2>
+<p class="reveal">We're hiring across engineering, product, sales, and customer success.</p>
+<a href="/get-a-demo.html" class="btn-primary reveal">Get in Touch</a>
 </section>
 
 
@@ -358,9 +380,6 @@ window.addEventListener('beforeunload',()=>{
   trackEvent('time_on_page',{seconds:Math.round((Date.now()-loadT)/1000)});
 });
 
-
-document.querySelectorAll('.counter').forEach(c=>{
-  new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const t=+c.dataset.target,s=performance.now();(function u(n){const p=Math.min((n-s)/1500,1);c.textContent=Math.round((1-Math.pow(1-p,3))*t);if(p<1)requestAnimationFrame(u)})(s)}})},{threshold:.5}).observe(c)});
 
 </script>
 </body>
